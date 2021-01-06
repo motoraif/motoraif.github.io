@@ -1,16 +1,13 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: a technology enthusiast with huge vision.  
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+My name is Mohammed Toraif. I have passion for technology since 1997, which was 23 years ago. That year I received my first Computer and it was running on Microsoft Windows 95. Since that day; my passion towards technology started developing..
 
-- I rock a great mustache
-- I'm extremely loyal to my family
-
-What else do you need?
+If you are visiting **_Bahrain_** by any chance, let's have some _Coffee or Tea!_
 
 ### My story
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+To be honest, I am trying to figure out what to do next, so why don't you just watch [my favorite movie](https://www.youtube.com/watch?v=4RoJtYkZa3c) and it will give you some answers about **Speaking without a Language**.
