@@ -42,7 +42,7 @@ round-avatar: true
 social-network-links:
 # email: "mohd@toraif.com"
 # facebook: deanattali
-#  github: motoraif
+  github: motoraif
   twitter: toraif
 # patreon: DeanAttali
 # youtube: c/daattali
@@ -50,8 +50,8 @@ social-network-links:
 #  linkedin: toraif
 #  xing: yourname
 #  stackoverflow: "3943160/daattali"
-#  snapchat: deanat78
-#  instagram: deanat78
+  snapchat: toraif
+  instagram: m.toraif
 #  spotify: yourname
 #  telephone: +14159998888
 #  steam: deanat78
@@ -65,7 +65,7 @@ social-network-links:
 
 # If you want to show a link to an RSS in the footer, add the site description here.
 # If you don't want to show an RSS link, remove the following line.
-rss-description: This website is a virtual proof that I'm awesome
+# rss-description: This website is a virtual proof that I'm awesome
 
 # --- General options --- #
 
@@ -110,9 +110,9 @@ footer-link-col: "#404040"
 # Alternatively, the navbar, footer, and page background can be set to an image
 # instead of colour
 
-#navbar-img: "/assets/img/bgimage.png"
-#footer-img: "/assets/img/bgimage.png"
-#page-img: "/assets/img/bgimage.png"
+navbar-img: "/assets/img/bgimage.png"
+footer-img: "/assets/img/bgimage.png"
+page-img: "/assets/img/bgimage.png"
 
 # Suggest a colour for mobile browsers to use as the browser's theme. This is only supported by a few mobile browsers.
 #mobile-theme-col: "#0085A1"
