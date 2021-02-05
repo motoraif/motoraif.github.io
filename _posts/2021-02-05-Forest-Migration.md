@@ -4,7 +4,7 @@ title: How to Migrate a Domain to New Forest
 subtitle: This is just a small guide to perform a smooth Migration
 #gh-repo: daattali/beautiful-jekyll
 #gh-badge: [star, fork, follow]
-tags: [Active Directory][ADDS][Migration]
+tags: [Active Directory] [Migration] [ADDS]
 comments: false
 ---
 
