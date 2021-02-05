@@ -8,11 +8,12 @@ tags: [SharePoint][Office365][Migration]
 comments: false
 ---
 
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
+I have been involved in a Forest to Forest Migration recently and I wanted to share with you a very short guideline that will help you if you have ended up performing a Full Domain Migration to a New Forest. 
 
-**Here is some bold text**
-
-## Here is a secondary heading
+## Scenario
+* There is a Root domain _contoso.com_ which has a child domain called _corp.contoso.com_
+* The child domain needs to be separated from its child. 
+* A new Forest is created for that purpose and it will be called _oldboyschool.com_.
 
 Here's a useless table:
 
