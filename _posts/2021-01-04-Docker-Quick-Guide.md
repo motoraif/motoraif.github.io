@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Docekr - Quick Guide
+title: Docker - Quick Guide
 subtitle: 
 #gh-repo: daattali/beautiful-jekyll
 #gh-badge: [star, fork, follow]
-tags: [Docekr, Containers, Micro-Services]
+tags: [Docker, Containers, Micro-Services]
 comments: false
 ---
 
