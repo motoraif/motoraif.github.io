@@ -2,12 +2,17 @@
 
 source "https://rubygems.org"
 
-# GitHub Pages compatible setup
-gem "github-pages", group: :jekyll_plugins
+# Use Jekyll directly instead of github-pages to avoid metadata issues
+gem "jekyll", "~> 3.9.0"
 
-# Additional plugins
+# Essential plugins
 gem "jekyll-paginate"
 gem "jekyll-sitemap"
+gem "jekyll-feed"
+
+# Kramdown and syntax highlighting
+gem "kramdown-parser-gfm"
+gem "rouge"
 
 # Fix Faraday v2.0+ warning
 gem "faraday-retry"
