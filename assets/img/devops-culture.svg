@@ -1,0 +1,130 @@
+<svg width="900" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #333; }
+      .subtitle { font: 16px sans-serif; fill: #666; }
+      .label { font: 14px sans-serif; fill: #333; text-anchor: middle; }
+      .small-label { font: 12px sans-serif; fill: #666; text-anchor: middle; }
+      .white-text { font: 12px sans-serif; fill: white; text-anchor: middle; }
+      .dev-blue { fill: #2196F3; stroke: #1976D2; stroke-width: 2; }
+      .ops-green { fill: #4CAF50; stroke: #388E3C; stroke-width: 2; }
+      .culture-purple { fill: #9C27B0; stroke: #7B1FA2; stroke-width: 2; }
+      .collaboration { fill: #FF9800; stroke: #F57C00; stroke-width: 2; }
+      .bridge { fill: #607D8B; stroke: #455A64; stroke-width: 2; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" class="title" text-anchor="middle">DevOps Culture: Breaking Down Silos</text>
+  <text x="450" y="45" class="subtitle" text-anchor="middle">Collaboration, Shared Responsibility, and Continuous Learning</text>
+  
+  <!-- Traditional Silos (Before) -->
+  <text x="200" y="80" style="font: 16px sans-serif; fill: #666; text-anchor: middle;">❌ Before: Siloed Teams</text>
+  
+  <!-- Dev Silo -->
+  <rect x="50" y="100" width="120" height="150" class="dev-blue" rx="10"/>
+  <text x="110" y="125" class="white-text">👨‍💻 Development</text>
+  <text x="110" y="145" class="white-text">Team</text>
+  
+  <text x="60" y="170" style="font: 11px sans-serif; fill: white;">• Write code</text>
+  <text x="60" y="185" style="font: 11px sans-serif; fill: white;">• Feature delivery</text>
+  <text x="60" y="200" style="font: 11px sans-serif; fill: white;">• "It works on my</text>
+  <text x="60" y="215" style="font: 11px sans-serif; fill: white;">  machine"</text>
+  <text x="60" y="230" style="font: 11px sans-serif; fill: white;">• Throw over wall</text>
+  
+  <!-- Ops Silo -->
+  <rect x="230" y="100" width="120" height="150" class="ops-green" rx="10"/>
+  <text x="290" y="125" class="white-text">⚙️ Operations</text>
+  <text x="290" y="145" class="white-text">Team</text>
+  
+  <text x="240" y="170" style="font: 11px sans-serif; fill: white;">• Deploy & maintain</text>
+  <text x="240" y="185" style="font: 11px sans-serif; fill: white;">• System stability</text>
+  <text x="240" y="200" style="font: 11px sans-serif; fill: white;">• "Don't break</text>
+  <text x="240" y="215" style="font: 11px sans-serif; fill: white;">  production"</text>
+  <text x="240" y="230" style="font: 11px sans-serif; fill: white;">• Resist changes</text>
+  
+  <!-- Wall between them -->
+  <rect x="175" y="100" width="10" height="150" fill="#F44336"/>
+  <text x="180" y="175" style="font: 12px sans-serif; fill: white; text-anchor: middle; writing-mode: tb;">🧱 WALL</text>
+  
+  <!-- Problems -->
+  <text x="200" y="270" class="small-label">Slow delivery, finger pointing, conflicts</text>
+  
+  <!-- DevOps Culture (After) -->
+  <text x="650" y="80" style="font: 16px sans-serif; fill: #666; text-anchor: middle;">✅ After: DevOps Culture</text>
+  
+  <!-- Unified Team -->
+  <ellipse cx="650" cy="175" rx="150" ry="75" class="culture-purple"/>
+  <text x="650" y="155" class="white-text" style="font: 16px sans-serif;">🤝 Unified Team</text>
+  <text x="650" y="175" class="white-text">Shared Responsibility</text>
+  <text x="650" y="195" class="white-text">Common Goals</text>
+  
+  <!-- Team members around the circle -->
+  <circle cx="580" cy="140" r="20" class="dev-blue"/>
+  <text x="580" y="145" class="white-text">👨‍💻</text>
+  
+  <circle cx="720" cy="140" r="20" class="ops-green"/>
+  <text x="720" y="145" class="white-text">⚙️</text>
+  
+  <circle cx="580" cy="210" r="20" class="collaboration"/>
+  <text x="580" y="215" class="white-text">🧪</text>
+  
+  <circle cx="720" cy="210" r="20" class="bridge"/>
+  <text x="720" y="215" class="white-text">🔒</text>
+  
+  <text x="650" y="270" class="small-label">Fast delivery, collaboration, shared success</text>
+  
+  <!-- Cultural Pillars -->
+  <text x="450" y="320" style="font: 18px sans-serif; fill: #333; text-anchor: middle;">🏛️ Cultural Pillars of DevOps</text>
+  
+  <!-- Collaboration -->
+  <rect x="50" y="340" width="180" height="120" fill="#E3F2FD" stroke="#2196F3" stroke-width="2" rx="8"/>
+  <text x="140" y="360" class="label">🤝 Collaboration</text>
+  <text x="60" y="380" style="font: 11px sans-serif; fill: #333;">• Cross-functional teams</text>
+  <text x="60" y="395" style="font: 11px sans-serif; fill: #333;">• Shared tools & processes</text>
+  <text x="60" y="410" style="font: 11px sans-serif; fill: #333;">• Open communication</text>
+  <text x="60" y="425" style="font: 11px sans-serif; fill: #333;">• Joint planning sessions</text>
+  <text x="60" y="440" style="font: 11px sans-serif; fill: #333;">• Collective ownership</text>
+  
+  <!-- Shared Responsibility -->
+  <rect x="250" y="340" width="180" height="120" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" rx="8"/>
+  <text x="340" y="360" class="label">⚖️ Shared Responsibility</text>
+  <text x="260" y="380" style="font: 11px sans-serif; fill: #333;">• "You build it, you run it"</text>
+  <text x="260" y="395" style="font: 11px sans-serif; fill: #333;">• End-to-end ownership</text>
+  <text x="260" y="410" style="font: 11px sans-serif; fill: #333;">• Quality is everyone's job</text>
+  <text x="260" y="425" style="font: 11px sans-serif; fill: #333;">• Shared on-call duties</text>
+  <text x="260" y="440" style="font: 11px sans-serif; fill: #333;">• Collective accountability</text>
+  
+  <!-- Continuous Learning -->
+  <rect x="450" y="340" width="180" height="120" fill="#FFF3E0" stroke="#FF9800" stroke-width="2" rx="8"/>
+  <text x="540" y="360" class="label">📚 Continuous Learning</text>
+  <text x="460" y="380" style="font: 11px sans-serif; fill: #333;">• Blameless post-mortems</text>
+  <text x="460" y="395" style="font: 11px sans-serif; fill: #333;">• Knowledge sharing</text>
+  <text x="460" y="410" style="font: 11px sans-serif; fill: #333;">• Experimentation time</text>
+  <text x="460" y="425" style="font: 11px sans-serif; fill: #333;">• Regular retrospectives</text>
+  <text x="460" y="440" style="font: 11px sans-serif; fill: #333;">• Skill development</text>
+  
+  <!-- Automation First -->
+  <rect x="650" y="340" width="180" height="120" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2" rx="8"/>
+  <text x="740" y="360" class="label">🤖 Automation First</text>
+  <text x="660" y="380" style="font: 11px sans-serif; fill: #333;">• Automate repetitive tasks</text>
+  <text x="660" y="395" style="font: 11px sans-serif; fill: #333;">• Self-service platforms</text>
+  <text x="660" y="410" style="font: 11px sans-serif; fill: #333;">• Infrastructure as Code</text>
+  <text x="660" y="425" style="font: 11px sans-serif; fill: #333;">• Automated testing</text>
+  <text x="660" y="440" style="font: 11px sans-serif; fill: #333;">• Continuous deployment</text>
+  
+  <!-- Transformation arrow -->
+  <path d="M 360 175 Q 450 150 540 175" stroke="#FF5722" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="450" y="140" style="font: 14px sans-serif; fill: #FF5722; text-anchor: middle;">Cultural Transformation</text>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722" />
+    </marker>
+  </defs>
+  
+  <!-- Success metrics -->
+  <rect x="50" y="480" width="800" height="15" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1" rx="3"/>
+  <text x="450" y="492" style="font: 12px sans-serif; fill: #4CAF50; text-anchor: middle;">📈 Success Metrics: Faster delivery, higher quality, improved employee satisfaction, reduced incidents</text>
+</svg>

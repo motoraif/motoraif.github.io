@@ -1,0 +1,154 @@
+<svg width="900" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #333; }
+      .subtitle { font: 16px sans-serif; fill: #666; }
+      .label { font: 14px sans-serif; fill: #333; text-anchor: middle; }
+      .small-label { font: 12px sans-serif; fill: #666; text-anchor: middle; }
+      .metric-title { font: 14px sans-serif; fill: white; text-anchor: middle; }
+      .metric-value { font: bold 24px sans-serif; text-anchor: middle; }
+      .dashboard-bg { fill: #37474F; stroke: #546E7A; stroke-width: 2; rx: 10; }
+      .metric-card { fill: #455A64; stroke: #607D8B; stroke-width: 1; rx: 8; }
+      .excellent { fill: #4CAF50; }
+      .good { fill: #8BC34A; }
+      .warning { fill: #FF9800; }
+      .poor { fill: #F44336; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" class="title" text-anchor="middle">DORA Metrics Dashboard</text>
+  <text x="450" y="45" class="subtitle" text-anchor="middle">DevOps Research and Assessment Key Performance Indicators</text>
+  
+  <!-- Main Dashboard Background -->
+  <rect x="20" y="60" width="860" height="420" class="dashboard-bg"/>
+  
+  <!-- Header -->
+  <rect x="40" y="80" width="820" height="30" fill="#546E7A" rx="5"/>
+  <text x="450" y="100" style="font: 16px sans-serif; fill: white; text-anchor: middle;">📊 DORA Four Key Metrics - Q3 2025 Performance</text>
+  
+  <!-- Deployment Frequency -->
+  <rect x="50" y="130" width="180" height="120" class="metric-card"/>
+  <text x="140" y="150" class="metric-title">🚀 Deployment Frequency</text>
+  <text x="140" y="180" class="metric-value excellent">Daily</text>
+  <text x="140" y="200" style="font: 12px sans-serif; fill: #81C784; text-anchor: middle;">Elite Performer</text>
+  <text x="140" y="220" style="font: 11px sans-serif; fill: #B0BEC5; text-anchor: middle;">3.2 deployments/day</text>
+  <text x="140" y="235" style="font: 10px sans-serif; fill: #90A4AE; text-anchor: middle;">↑ 15% from last quarter</text>
+  
+  <!-- Lead Time for Changes -->
+  <rect x="250" y="130" width="180" height="120" class="metric-card"/>
+  <text x="340" y="150" class="metric-title">⏱️ Lead Time for Changes</text>
+  <text x="340" y="180" class="metric-value excellent">< 1 day</text>
+  <text x="340" y="200" style="font: 12px sans-serif; fill: #81C784; text-anchor: middle;">Elite Performer</text>
+  <text x="340" y="220" style="font: 11px sans-serif; fill: #B0BEC5; text-anchor: middle;">Average: 4.2 hours</text>
+  <text x="340" y="235" style="font: 10px sans-serif; fill: #90A4AE; text-anchor: middle;">↓ 2.3 hours from last quarter</text>
+  
+  <!-- Change Failure Rate -->
+  <rect x="450" y="130" width="180" height="120" class="metric-card"/>
+  <text x="540" y="150" class="metric-title">❌ Change Failure Rate</text>
+  <text x="540" y="180" class="metric-value good">5%</text>
+  <text x="540" y="200" style="font: 12px sans-serif; fill: #AED581; text-anchor: middle;">High Performer</text>
+  <text x="540" y="220" style="font: 11px sans-serif; fill: #B0BEC5; text-anchor: middle;">5 failures / 100 changes</text>
+  <text x="540" y="235" style="font: 10px sans-serif; fill: #90A4AE; text-anchor: middle;">↓ 2% from last quarter</text>
+  
+  <!-- Mean Time to Recovery -->
+  <rect x="650" y="130" width="180" height="120" class="metric-card"/>
+  <text x="740" y="150" class="metric-title">🔧 Mean Time to Recovery</text>
+  <text x="740" y="180" class="metric-value excellent">< 1 hour</text>
+  <text x="740" y="200" style="font: 12px sans-serif; fill: #81C784; text-anchor: middle;">Elite Performer</text>
+  <text x="740" y="220" style="font: 11px sans-serif; fill: #B0BEC5; text-anchor: middle;">Average: 23 minutes</text>
+  <text x="740" y="235" style="font: 10px sans-serif; fill: #90A4AE; text-anchor: middle;">↓ 12 min from last quarter</text>
+  
+  <!-- Performance Trend Chart -->
+  <rect x="50" y="270" width="380" height="180" class="metric-card"/>
+  <text x="240" y="290" class="metric-title">📈 Performance Trends (Last 6 Months)</text>
+  
+  <!-- Chart area -->
+  <rect x="70" y="300" width="340" height="120" fill="#37474F" stroke="#546E7A" stroke-width="1"/>
+  
+  <!-- Grid lines -->
+  <line x1="70" y1="330" x2="410" y2="330" stroke="#546E7A" stroke-width="1" opacity="0.5"/>
+  <line x1="70" y1="360" x2="410" y2="360" stroke="#546E7A" stroke-width="1" opacity="0.5"/>
+  <line x1="70" y1="390" x2="410" y2="390" stroke="#546E7A" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Deployment Frequency Line -->
+  <path d="M 80 380 L 130 370 L 180 360 L 230 350 L 280 340 L 330 330 L 380 320" 
+        stroke="#4CAF50" stroke-width="3" fill="none"/>
+  
+  <!-- Lead Time Line -->
+  <path d="M 80 390 L 130 385 L 180 375 L 230 370 L 280 365 L 330 355 L 380 350" 
+        stroke="#2196F3" stroke-width="3" fill="none"/>
+  
+  <!-- Change Failure Rate Line -->
+  <path d="M 80 370 L 130 375 L 180 365 L 230 360 L 280 355 L 330 350 L 380 345" 
+        stroke="#FF9800" stroke-width="3" fill="none"/>
+  
+  <!-- MTTR Line -->
+  <path d="M 80 385 L 130 380 L 180 370 L 230 365 L 280 360 L 330 350 L 380 340" 
+        stroke="#9C27B0" stroke-width="3" fill="none"/>
+  
+  <!-- Chart legend -->
+  <rect x="75" y="430" width="10" height="3" fill="#4CAF50"/>
+  <text x="90" y="435" style="font: 10px sans-serif; fill: #B0BEC5;">Deployment Frequency</text>
+  
+  <rect x="200" y="430" width="10" height="3" fill="#2196F3"/>
+  <text x="215" y="435" style="font: 10px sans-serif; fill: #B0BEC5;">Lead Time</text>
+  
+  <rect x="280" y="430" width="10" height="3" fill="#FF9800"/>
+  <text x="295" y="435" style="font: 10px sans-serif; fill: #B0BEC5;">Failure Rate</text>
+  
+  <rect x="360" y="430" width="10" height="3" fill="#9C27B0"/>
+  <text x="375" y="435" style="font: 10px sans-serif; fill: #B0BEC5;">MTTR</text>
+  
+  <!-- Performance Categories -->
+  <rect x="450" y="270" width="180" height="180" class="metric-card"/>
+  <text x="540" y="290" class="metric-title">🏆 Performance Categories</text>
+  
+  <!-- Elite -->
+  <rect x="460" y="305" width="15" height="15" class="excellent"/>
+  <text x="480" y="315" style="font: 12px sans-serif; fill: white;">Elite Performer</text>
+  <text x="465" y="330" style="font: 10px sans-serif; fill: #B0BEC5;">• Deploy multiple times/day</text>
+  <text x="465" y="342" style="font: 10px sans-serif; fill: #B0BEC5;">• Lead time < 1 hour</text>
+  <text x="465" y="354" style="font: 10px sans-serif; fill: #B0BEC5;">• Change failure < 15%</text>
+  <text x="465" y="366" style="font: 10px sans-serif; fill: #B0BEC5;">• Recovery < 1 hour</text>
+  
+  <!-- High -->
+  <rect x="460" y="375" width="15" height="15" class="good"/>
+  <text x="480" y="385" style="font: 12px sans-serif; fill: white;">High Performer</text>
+  <text x="465" y="400" style="font: 10px sans-serif; fill: #B0BEC5;">• Deploy weekly to monthly</text>
+  <text x="465" y="412" style="font: 10px sans-serif; fill: #B0BEC5;">• Lead time 1 day to 1 week</text>
+  <text x="465" y="424" style="font: 10px sans-serif; fill: #B0BEC5;">• Recovery < 1 day</text>
+  
+  <!-- Team Performance Summary -->
+  <rect x="650" y="270" width="180" height="180" class="metric-card"/>
+  <text x="740" y="290" class="metric-title">👥 Team Performance</text>
+  
+  <!-- Team scores -->
+  <text x="660" y="315" style="font: 12px sans-serif; fill: white;">Frontend Team</text>
+  <rect x="770" y="308" width="50" height="12" class="excellent" rx="6"/>
+  <text x="795" y="317" style="font: 10px sans-serif; fill: white; text-anchor: middle;">Elite</text>
+  
+  <text x="660" y="335" style="font: 12px sans-serif; fill: white;">Backend Team</text>
+  <rect x="770" y="328" width="50" height="12" class="excellent" rx="6"/>
+  <text x="795" y="337" style="font: 10px sans-serif; fill: white; text-anchor: middle;">Elite</text>
+  
+  <text x="660" y="355" style="font: 12px sans-serif; fill: white;">DevOps Team</text>
+  <rect x="770" y="348" width="50" height="12" class="excellent" rx="6"/>
+  <text x="795" y="357" style="font: 10px sans-serif; fill: white; text-anchor: middle;">Elite</text>
+  
+  <text x="660" y="375" style="font: 12px sans-serif; fill: white;">QA Team</text>
+  <rect x="770" y="368" width="50" height="12" class="good" rx="6"/>
+  <text x="795" y="377" style="font: 10px sans-serif; fill: white; text-anchor: middle;">High</text>
+  
+  <text x="660" y="395" style="font: 12px sans-serif; fill: white;">Security Team</text>
+  <rect x="770" y="388" width="50" height="12" class="good" rx="6"/>
+  <text x="795" y="397" style="font: 10px sans-serif; fill: white; text-anchor: middle;">High</text>
+  
+  <!-- Overall Score -->
+  <text x="740" y="420" style="font: 14px sans-serif; fill: #4CAF50; text-anchor: middle;">Overall: Elite</text>
+  <text x="740" y="435" style="font: 12px sans-serif; fill: #81C784; text-anchor: middle;">🏆 Top 7% of organizations</text>
+  
+  <!-- Footer -->
+  <rect x="40" y="460" width="820" height="15" fill="#546E7A" rx="3"/>
+  <text x="450" y="472" style="font: 11px sans-serif; fill: #B0BEC5; text-anchor: middle;">📊 Data collected from CI/CD pipelines, incident management, and deployment tracking systems</text>
+</svg>

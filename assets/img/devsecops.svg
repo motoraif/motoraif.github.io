@@ -1,0 +1,173 @@
+<svg width="1000" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #333; }
+      .subtitle { font: 16px sans-serif; fill: #666; }
+      .label { font: 14px sans-serif; fill: #333; text-anchor: middle; }
+      .small-label { font: 12px sans-serif; fill: #666; text-anchor: middle; }
+      .white-text { font: 12px sans-serif; fill: white; text-anchor: middle; }
+      .arrow { stroke: #F44336; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .security-red { fill: #F44336; stroke: #D32F2F; stroke-width: 2; }
+      .dev-blue { fill: #2196F3; stroke: #1976D2; stroke-width: 2; }
+      .ops-green { fill: #4CAF50; stroke: #388E3C; stroke-width: 2; }
+      .shield { fill: #FF5722; stroke: #D84315; stroke-width: 2; }
+      .scan-box { fill: #FFF3E0; stroke: #FF9800; stroke-width: 2; rx: 5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F44336" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="500" y="25" class="title" text-anchor="middle">DevSecOps: Security Integrated Throughout the Pipeline</text>
+  <text x="500" y="45" class="subtitle" text-anchor="middle">"Shift Left" - Security as Code, Not an Afterthought</text>
+  
+  <!-- Traditional vs DevSecOps comparison -->
+  <text x="200" y="80" style="font: 16px sans-serif; fill: #666; text-anchor: middle;">❌ Traditional Approach</text>
+  <text x="800" y="80" style="font: 16px sans-serif; fill: #666; text-anchor: middle;">✅ DevSecOps Approach</text>
+  
+  <!-- Traditional Pipeline (Top) -->
+  <rect x="50" y="100" width="80" height="40" class="dev-blue" rx="5"/>
+  <text x="90" y="125" class="white-text">Dev</text>
+  
+  <rect x="150" y="100" width="80" height="40" class="ops-green" rx="5"/>
+  <text x="190" y="125" class="white-text">Ops</text>
+  
+  <rect x="250" y="100" width="80" height="40" class="security-red" rx="5"/>
+  <text x="290" y="125" class="white-text">Security</text>
+  
+  <line x1="130" y1="120" x2="150" y2="120" class="arrow"/>
+  <line x1="230" y1="120" x2="250" y2="120" class="arrow"/>
+  
+  <text x="200" y="160" class="small-label">Security tested at the end</text>
+  <text x="200" y="175" class="small-label">Expensive fixes, delays</text>
+  
+  <!-- DevSecOps Pipeline (Bottom) -->
+  <rect x="450" y="100" width="700" height="60" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" rx="10"/>
+  <text x="800" y="120" class="label">🔒 Security Integrated Throughout</text>
+  
+  <!-- Pipeline stages with security -->
+  <rect x="470" y="110" width="80" height="40" class="dev-blue" rx="5"/>
+  <text x="510" y="135" class="white-text">Plan</text>
+  <circle cx="530" cy="115" r="8" class="shield"/>
+  <text x="530" y="119" style="font: 10px sans-serif; fill: white;">🛡️</text>
+  
+  <rect x="570" y="110" width="80" height="40" class="dev-blue" rx="5"/>
+  <text x="610" y="135" class="white-text">Code</text>
+  <circle cx="630" cy="115" r="8" class="shield"/>
+  <text x="630" y="119" style="font: 10px sans-serif; fill: white;">🔍</text>
+  
+  <rect x="670" y="110" width="80" height="40" class="ops-green" rx="5"/>
+  <text x="710" y="135" class="white-text">Build</text>
+  <circle cx="730" cy="115" r="8" class="shield"/>
+  <text x="730" y="119" style="font: 10px sans-serif; fill: white;">🔒</text>
+  
+  <rect x="770" y="110" width="80" height="40" class="ops-green" rx="5"/>
+  <text x="810" y="135" class="white-text">Test</text>
+  <circle cx="830" cy="115" r="8" class="shield"/>
+  <text x="830" y="119" style="font: 10px sans-serif; fill: white;">🧪</text>
+  
+  <rect x="870" y="110" width="80" height="40" class="ops-green" rx="5"/>
+  <text x="910" y="135" class="white-text">Deploy</text>
+  <circle cx="930" cy="115" r="8" class="shield"/>
+  <text x="930" y="119" style="font: 10px sans-serif; fill: white;">🚀</text>
+  
+  <rect x="970" y="110" width="80" height="40" class="ops-green" rx="5"/>
+  <text x="1010" y="135" class="white-text">Monitor</text>
+  <circle cx="1030" cy="115" r="8" class="shield"/>
+  <text x="1030" y="119" style="font: 10px sans-serif; fill: white;">👁️</text>
+  
+  <!-- Security Tools and Practices -->
+  <text x="500" y="220" style="font: 18px sans-serif; fill: #333; text-anchor: middle;">🔧 Security Tools & Practices by Stage</text>
+  
+  <!-- Plan Stage Security -->
+  <rect x="50" y="250" width="150" height="120" class="scan-box"/>
+  <text x="125" y="270" class="label">📋 Plan & Design</text>
+  <text x="60" y="290" style="font: 11px sans-serif; fill: #333;">• Threat modeling</text>
+  <text x="60" y="305" style="font: 11px sans-serif; fill: #333;">• Security requirements</text>
+  <text x="60" y="320" style="font: 11px sans-serif; fill: #333;">• Architecture review</text>
+  <text x="60" y="335" style="font: 11px sans-serif; fill: #333;">• Compliance mapping</text>
+  <text x="60" y="350" style="font: 11px sans-serif; fill: #333;">• Risk assessment</text>
+  
+  <!-- Code Stage Security -->
+  <rect x="220" y="250" width="150" height="120" class="scan-box"/>
+  <text x="295" y="270" class="label">💻 Code Security</text>
+  <text x="230" y="290" style="font: 11px sans-serif; fill: #333;">• SAST (Static Analysis)</text>
+  <text x="230" y="305" style="font: 11px sans-serif; fill: #333;">• Code quality gates</text>
+  <text x="230" y="320" style="font: 11px sans-serif; fill: #333;">• Secret scanning</text>
+  <text x="230" y="335" style="font: 11px sans-serif; fill: #333;">• Dependency check</text>
+  <text x="230" y="350" style="font: 11px sans-serif; fill: #333;">• Peer review</text>
+  
+  <!-- Build Stage Security -->
+  <rect x="390" y="250" width="150" height="120" class="scan-box"/>
+  <text x="465" y="270" class="label">🏗️ Build Security</text>
+  <text x="400" y="290" style="font: 11px sans-serif; fill: #333;">• Container scanning</text>
+  <text x="400" y="305" style="font: 11px sans-serif; fill: #333;">• Image signing</text>
+  <text x="400" y="320" style="font: 11px sans-serif; fill: #333;">• Vulnerability scan</text>
+  <text x="400" y="335" style="font: 11px sans-serif; fill: #333;">• License compliance</text>
+  <text x="400" y="350" style="font: 11px sans-serif; fill: #333;">• Supply chain security</text>
+  
+  <!-- Test Stage Security -->
+  <rect x="560" y="250" width="150" height="120" class="scan-box"/>
+  <text x="635" y="270" class="label">🧪 Test Security</text>
+  <text x="570" y="290" style="font: 11px sans-serif; fill: #333;">• DAST (Dynamic Analysis)</text>
+  <text x="570" y="305" style="font: 11px sans-serif; fill: #333;">• Penetration testing</text>
+  <text x="570" y="320" style="font: 11px sans-serif; fill: #333;">• API security testing</text>
+  <text x="570" y="335" style="font: 11px sans-serif; fill: #333;">• Performance testing</text>
+  <text x="570" y="350" style="font: 11px sans-serif; fill: #333;">• Security regression</text>
+  
+  <!-- Deploy Stage Security -->
+  <rect x="730" y="250" width="150" height="120" class="scan-box"/>
+  <text x="805" y="270" class="label">🚀 Deploy Security</text>
+  <text x="740" y="290" style="font: 11px sans-serif; fill: #333;">• Infrastructure scan</text>
+  <text x="740" y="305" style="font: 11px sans-serif; fill: #333;">• Configuration audit</text>
+  <text x="740" y="320" style="font: 11px sans-serif; fill: #333;">• Runtime protection</text>
+  <text x="740" y="335" style="font: 11px sans-serif; fill: #333;">• Access controls</text>
+  <text x="740" y="350" style="font: 11px sans-serif; fill: #333;">• Secrets management</text>
+  
+  <!-- Monitor Stage Security -->
+  <rect x="50" y="390" width="150" height="100" class="scan-box"/>
+  <text x="125" y="410" class="label">👁️ Monitor Security</text>
+  <text x="60" y="430" style="font: 11px sans-serif; fill: #333;">• SIEM integration</text>
+  <text x="60" y="445" style="font: 11px sans-serif; fill: #333;">• Anomaly detection</text>
+  <text x="60" y="460" style="font: 11px sans-serif; fill: #333;">• Incident response</text>
+  <text x="60" y="475" style="font: 11px sans-serif; fill: #333;">• Compliance reporting</text>
+  
+  <!-- Security Tools -->
+  <rect x="220" y="390" width="200" height="100" fill="#FFEBEE" stroke="#F44336" stroke-width="2" rx="8"/>
+  <text x="320" y="410" class="label">🛠️ Popular Security Tools</text>
+  <text x="230" y="430" style="font: 11px sans-serif; fill: #333;">• Snyk, OWASP ZAP</text>
+  <text x="230" y="445" style="font: 11px sans-serif; fill: #333;">• SonarQube, Checkmarx</text>
+  <text x="230" y="460" style="font: 11px sans-serif; fill: #333;">• Trivy, Clair, Twistlock</text>
+  <text x="230" y="475" style="font: 11px sans-serif; fill: #333;">• HashiCorp Vault</text>
+  
+  <!-- Benefits -->
+  <rect x="440" y="390" width="200" height="100" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" rx="8"/>
+  <text x="540" y="410" class="label">✅ DevSecOps Benefits</text>
+  <text x="450" y="430" style="font: 11px sans-serif; fill: #333;">• Early vulnerability detection</text>
+  <text x="450" y="445" style="font: 11px sans-serif; fill: #333;">• Reduced security debt</text>
+  <text x="450" y="460" style="font: 11px sans-serif; fill: #333;">• Faster remediation</text>
+  <text x="450" y="475" style="font: 11px sans-serif; fill: #333;">• Compliance automation</text>
+  
+  <!-- Implementation Steps -->
+  <rect x="660" y="390" width="200" height="100" fill="#E3F2FD" stroke="#2196F3" stroke-width="2" rx="8"/>
+  <text x="760" y="410" class="label">🚀 Implementation Steps</text>
+  <text x="670" y="430" style="font: 11px sans-serif; fill: #333;">1. Security training for teams</text>
+  <text x="670" y="445" style="font: 11px sans-serif; fill: #333;">2. Integrate security tools</text>
+  <text x="670" y="460" style="font: 11px sans-serif; fill: #333;">3. Automate security testing</text>
+  <text x="670" y="475" style="font: 11px sans-serif; fill: #333;">4. Monitor & improve</text>
+  
+  <!-- Security Metrics -->
+  <rect x="880" y="390" width="120" height="100" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2" rx="8"/>
+  <text x="940" y="410" class="label">📊 Key Metrics</text>
+  <text x="890" y="430" style="font: 11px sans-serif; fill: #333;">• MTTR (security)</text>
+  <text x="890" y="445" style="font: 11px sans-serif; fill: #333;">• Vulnerability count</text>
+  <text x="890" y="460" style="font: 11px sans-serif; fill: #333;">• Coverage %</text>
+  <text x="890" y="475" style="font: 11px sans-serif; fill: #333;">• False positives</text>
+  
+  <!-- Security Shield in center -->
+  <circle cx="500" cy="300" r="40" fill="rgba(244, 67, 54, 0.1)" stroke="#F44336" stroke-width="3"/>
+  <text x="500" y="310" style="font: 30px sans-serif; fill: #F44336; text-anchor: middle;">🛡️</text>
+  <text x="500" y="330" style="font: 12px sans-serif; fill: #F44336; text-anchor: middle;">Security</text>
+  <text x="500" y="345" style="font: 12px sans-serif; fill: #F44336; text-anchor: middle;">First</text>
+</svg>

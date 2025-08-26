@@ -1,0 +1,138 @@
+<svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #333; }
+      .subtitle { font: 16px sans-serif; fill: #666; }
+      .label { font: 14px sans-serif; fill: #333; text-anchor: middle; }
+      .small-label { font: 12px sans-serif; fill: #666; text-anchor: middle; }
+      .white-text { font: 12px sans-serif; fill: white; text-anchor: middle; }
+      .arrow { stroke: #FF5722; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .git-orange { fill: #FF5722; stroke: #D84315; stroke-width: 2; }
+      .k8s-blue { fill: #326CE5; stroke: #1976D2; stroke-width: 2; }
+      .argocd-purple { fill: #9C27B0; stroke: #7B1FA2; stroke-width: 2; }
+      .repo-box { fill: #FFF3E0; stroke: #FF9800; stroke-width: 2; rx: 8; }
+      .cluster-box { fill: #E3F2FD; stroke: #2196F3; stroke-width: 2; rx: 8; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="500" y="25" class="title" text-anchor="middle">GitOps Workflow: Git as Single Source of Truth</text>
+  <text x="500" y="45" class="subtitle" text-anchor="middle">Declarative Infrastructure and Application Management</text>
+  
+  <!-- Developer -->
+  <circle cx="80" cy="120" r="30" fill="#4CAF50" stroke="#388E3C" stroke-width="2"/>
+  <text x="80" y="125" style="font: 20px sans-serif; text-anchor: middle;">👨‍💻</text>
+  <text x="80" y="160" class="small-label">Developer</text>
+  
+  <!-- Git Repository -->
+  <rect x="180" y="80" width="160" height="80" class="repo-box"/>
+  <text x="260" y="100" class="label">📁 Git Repository</text>
+  <text x="260" y="120" class="label">(Single Source of Truth)</text>
+  
+  <!-- Repository contents -->
+  <rect x="190" y="130" width="140" height="25" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1" rx="3"/>
+  <text x="200" y="145" style="font: 10px sans-serif; fill: #333;">📄 k8s-manifests/</text>
+  <text x="300" y="145" style="font: 10px sans-serif; fill: #666;">YAML files</text>
+  
+  <text x="260" y="175" class="small-label">Kubernetes Manifests</text>
+  
+  <!-- GitOps Operator (ArgoCD) -->
+  <rect x="400" y="80" width="160" height="80" class="argocd-purple" rx="8"/>
+  <text x="480" y="105" class="white-text">⚙️ GitOps Operator</text>
+  <text x="480" y="125" class="white-text">(ArgoCD/Flux)</text>
+  <text x="480" y="145" class="white-text">Continuous Sync</text>
+  <text x="480" y="175" class="small-label">Monitors Git Repository</text>
+  
+  <!-- Kubernetes Cluster -->
+  <rect x="620" y="60" width="320" height="120" class="cluster-box"/>
+  <text x="780" y="85" class="label">☸️ Kubernetes Cluster</text>
+  
+  <!-- Cluster components -->
+  <rect x="640" y="100" width="80" height="60" class="k8s-blue" rx="5"/>
+  <text x="680" y="125" class="white-text">🚀 Apps</text>
+  <text x="680" y="140" class="white-text">Running</text>
+  
+  <rect x="740" y="100" width="80" height="60" class="k8s-blue" rx="5"/>
+  <text x="780" y="125" class="white-text">🔧 Config</text>
+  <text x="780" y="140" class="white-text">Applied</text>
+  
+  <rect x="840" y="100" width="80" height="60" class="k8s-blue" rx="5"/>
+  <text x="880" y="125" class="white-text">📊 Monitor</text>
+  <text x="880" y="140" class="white-text">Health</text>
+  
+  <!-- Arrows -->
+  <line x1="110" y1="120" x2="180" y2="120" class="arrow"/>
+  <line x1="340" y1="120" x2="400" y2="120" class="arrow"/>
+  <line x1="560" y1="120" x2="620" y2="120" class="arrow"/>
+  
+  <!-- Git commit flow -->
+  <text x="140" y="105" style="font: 10px sans-serif; fill: #666;">git push</text>
+  <text x="370" y="105" style="font: 10px sans-serif; fill: #666;">poll/webhook</text>
+  <text x="590" y="105" style="font: 10px sans-serif; fill: #666;">kubectl apply</text>
+  
+  <!-- GitOps Principles -->
+  <rect x="50" y="220" width="200" height="140" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" rx="8"/>
+  <text x="150" y="240" class="label">✅ GitOps Principles</text>
+  
+  <text x="60" y="260" style="font: 12px sans-serif; fill: #333;">1. 📝 Declarative</text>
+  <text x="70" y="275" style="font: 11px sans-serif; fill: #666;">Entire system described declaratively</text>
+  
+  <text x="60" y="295" style="font: 12px sans-serif; fill: #333;">2. 📋 Versioned</text>
+  <text x="70" y="310" style="font: 11px sans-serif; fill: #666;">Desired state stored in Git</text>
+  
+  <text x="60" y="330" style="font: 12px sans-serif; fill: #333;">3. 🔄 Automated</text>
+  <text x="70" y="345" style="font: 11px sans-serif; fill: #666;">Changes applied automatically</text>
+  
+  <!-- Benefits -->
+  <rect x="270" y="220" width="200" height="140" fill="#E3F2FD" stroke="#2196F3" stroke-width="2" rx="8"/>
+  <text x="370" y="240" class="label">🚀 Benefits</text>
+  
+  <text x="280" y="260" style="font: 11px sans-serif; fill: #333;">• 🔒 Enhanced Security</text>
+  <text x="285" y="275" style="font: 10px sans-serif; fill: #666;">No direct cluster access needed</text>
+  
+  <text x="280" y="295" style="font: 11px sans-serif; fill: #333;">• 📈 Improved Reliability</text>
+  <text x="285" y="310" style="font: 10px sans-serif; fill: #666;">Consistent, repeatable deployments</text>
+  
+  <text x="280" y="330" style="font: 11px sans-serif; fill: #333;">• 🔄 Easy Rollbacks</text>
+  <text x="285" y="345" style="font: 10px sans-serif; fill: #666;">Git history enables quick reverts</text>
+  
+  <!-- Workflow Steps -->
+  <rect x="490" y="220" width="200" height="140" fill="#FFF3E0" stroke="#FF9800" stroke-width="2" rx="8"/>
+  <text x="590" y="240" class="label">🔄 Workflow Steps</text>
+  
+  <text x="500" y="260" style="font: 11px sans-serif; fill: #333;">1. Developer commits changes</text>
+  <text x="500" y="275" style="font: 11px sans-serif; fill: #333;">2. GitOps operator detects drift</text>
+  <text x="500" y="290" style="font: 11px sans-serif; fill: #333;">3. Operator syncs cluster state</text>
+  <text x="500" y="305" style="font: 11px sans-serif; fill: #333;">4. Applications updated</text>
+  <text x="500" y="320" style="font: 11px sans-serif; fill: #333;">5. Health monitoring</text>
+  <text x="500" y="335" style="font: 11px sans-serif; fill: #333;">6. Alerts on failures</text>
+  
+  <!-- Tools -->
+  <rect x="710" y="220" width="200" height="140" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2" rx="8"/>
+  <text x="810" y="240" class="label">🛠️ Popular Tools</text>
+  
+  <text x="720" y="260" style="font: 12px sans-serif; fill: #333;">🔄 ArgoCD</text>
+  <text x="725" y="275" style="font: 10px sans-serif; fill: #666;">Kubernetes-native GitOps</text>
+  
+  <text x="720" y="295" style="font: 12px sans-serif; fill: #333;">🌊 Flux</text>
+  <text x="725" y="310" style="font: 10px sans-serif; fill: #666;">CNCF GitOps operator</text>
+  
+  <text x="720" y="330" style="font: 12px sans-serif; fill: #333;">🚀 Jenkins X</text>
+  <text x="725" y="345" style="font: 10px sans-serif; fill: #666;">CI/CD with GitOps</text>
+  
+  <!-- Feedback loop -->
+  <path d="M 780 180 Q 500 200 260 180" stroke="#9C27B0" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <text x="500" y="195" style="font: 11px sans-serif; fill: #9C27B0; text-anchor: middle;">Continuous Monitoring & Feedback</text>
+  
+  <!-- Status indicators -->
+  <circle cx="920" cy="90" r="8" fill="#4CAF50"/>
+  <text x="920" y="95" style="font: 10px sans-serif; fill: white; text-anchor: middle;">✓</text>
+  <text x="940" y="95" style="font: 10px sans-serif; fill: #4CAF50;">Synced</text>
+  
+  <!-- Drift detection -->
+  <rect x="50" y="380" width="900" height="15" fill="#FFEBEE" stroke="#F44336" stroke-width="1" rx="3"/>
+  <text x="500" y="392" style="font: 12px sans-serif; fill: #F44336; text-anchor: middle;">🚨 Drift Detection: GitOps operator continuously monitors for differences between Git and cluster state</text>
+</svg>

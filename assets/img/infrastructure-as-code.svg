@@ -1,0 +1,105 @@
+<svg width="900" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #333; }
+      .subtitle { font: 16px sans-serif; fill: #666; }
+      .label { font: 14px sans-serif; fill: #333; text-anchor: middle; }
+      .small-label { font: 12px sans-serif; fill: #666; text-anchor: middle; }
+      .arrow { stroke: #FF5722; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .code-box { fill: #263238; stroke: #37474F; stroke-width: 2; rx: 5; }
+      .cloud-box { fill: #E3F2FD; stroke: #2196F3; stroke-width: 2; rx: 8; }
+      .version-box { fill: #F3E5F5; stroke: #9C27B0; stroke-width: 2; rx: 5; }
+      .code-text { font: 10px monospace; fill: #4CAF50; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" class="title" text-anchor="middle">Infrastructure as Code (IaC)</text>
+  <text x="450" y="45" class="subtitle" text-anchor="middle">Version-Controlled, Repeatable Infrastructure</text>
+  
+  <!-- Developer -->
+  <circle cx="80" cy="120" r="30" fill="#FFC107" stroke="#FF8F00" stroke-width="2"/>
+  <text x="80" y="125" class="label">👨‍💻</text>
+  <text x="80" y="160" class="small-label">Developer</text>
+  
+  <!-- Code Repository -->
+  <rect x="180" y="80" width="140" height="80" class="version-box"/>
+  <text x="250" y="100" class="label">📁 Git Repository</text>
+  <rect x="190" y="110" width="120" height="40" class="code-box"/>
+  <text x="200" y="125" class="code-text">resource "aws_instance" {</text>
+  <text x="200" y="135" class="code-text">  ami = "ami-12345"</text>
+  <text x="200" y="145" class="code-text">}</text>
+  <text x="250" y="170" class="small-label">Terraform/CloudFormation</text>
+  
+  <!-- CI/CD Pipeline -->
+  <rect x="360" y="80" width="120" height="80" fill="#4CAF50" stroke="#388E3C" stroke-width="2" rx="5"/>
+  <text x="420" y="105" class="label" fill="white">⚙️ CI/CD</text>
+  <text x="420" y="125" class="label" fill="white">Pipeline</text>
+  <text x="420" y="145" class="label" fill="white">Validation</text>
+  <text x="420" y="170" class="small-label">Automated Testing</text>
+  
+  <!-- Cloud Infrastructure -->
+  <rect x="520" y="60" width="320" height="120" class="cloud-box"/>
+  <text x="680" y="85" class="label">☁️ Cloud Infrastructure</text>
+  
+  <!-- EC2 Instances -->
+  <rect x="540" y="100" width="80" height="60" fill="#FF9800" stroke="#F57C00" stroke-width="2" rx="5"/>
+  <text x="580" y="125" class="label" fill="white">🖥️ EC2</text>
+  <text x="580" y="140" class="label" fill="white">Instances</text>
+  
+  <!-- Load Balancer -->
+  <rect x="640" y="100" width="80" height="60" fill="#9C27B0" stroke="#7B1FA2" stroke-width="2" rx="5"/>
+  <text x="680" y="125" class="label" fill="white">⚖️ Load</text>
+  <text x="680" y="140" class="label" fill="white">Balancer</text>
+  
+  <!-- Database -->
+  <rect x="740" y="100" width="80" height="60" fill="#607D8B" stroke="#455A64" stroke-width="2" rx="5"/>
+  <text x="780" y="125" class="label" fill="white">🗄️ RDS</text>
+  <text x="780" y="140" class="label" fill="white">Database</text>
+  
+  <!-- Arrows -->
+  <line x1="110" y1="120" x2="180" y2="120" class="arrow"/>
+  <line x1="320" y1="120" x2="360" y2="120" class="arrow"/>
+  <line x1="480" y1="120" x2="520" y2="120" class="arrow"/>
+  
+  <!-- Version Control Benefits -->
+  <rect x="50" y="220" width="200" height="120" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" rx="8"/>
+  <text x="150" y="240" class="label">✅ Version Control Benefits</text>
+  <text x="60" y="260" class="small-label">• Track infrastructure changes</text>
+  <text x="60" y="280" class="small-label">• Rollback capabilities</text>
+  <text x="60" y="300" class="small-label">• Collaboration & code review</text>
+  <text x="60" y="320" class="small-label">• Audit trail & compliance</text>
+  
+  <!-- Automation Benefits -->
+  <rect x="270" y="220" width="200" height="120" fill="#FFF3E0" stroke="#FF9800" stroke-width="2" rx="8"/>
+  <text x="370" y="240" class="label">🤖 Automation Benefits</text>
+  <text x="280" y="260" class="small-label">• Consistent deployments</text>
+  <text x="280" y="280" class="small-label">• Reduced human error</text>
+  <text x="280" y="300" class="small-label">• Faster provisioning</text>
+  <text x="280" y="320" class="small-label">• Self-documenting</text>
+  
+  <!-- Scalability Benefits -->
+  <rect x="490" y="220" width="200" height="120" fill="#E3F2FD" stroke="#2196F3" stroke-width="2" rx="8"/>
+  <text x="590" y="240" class="label">📈 Scalability Benefits</text>
+  <text x="500" y="260" class="small-label">• Environment replication</text>
+  <text x="500" y="280" class="small-label">• Multi-region deployment</text>
+  <text x="500" y="300" class="small-label">• Disaster recovery</text>
+  <text x="500" y="320" class="small-label">• Cost optimization</text>
+  
+  <!-- Tools -->
+  <rect x="710" y="220" width="140" height="120" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2" rx="8"/>
+  <text x="780" y="240" class="label">🛠️ Popular Tools</text>
+  <text x="720" y="260" class="small-label">• Terraform</text>
+  <text x="720" y="280" class="small-label">• CloudFormation</text>
+  <text x="720" y="300" class="small-label">• Pulumi</text>
+  <text x="720" y="320" class="small-label">• CDK</text>
+  
+  <!-- Flow arrows -->
+  <path d="M 150 180 Q 150 200 150 220" stroke="#4CAF50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 370 180 Q 370 200 370 220" stroke="#FF9800" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 590 180 Q 590 200 590 220" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 780 180 Q 780 200 780 220" stroke="#9C27B0" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+</svg>

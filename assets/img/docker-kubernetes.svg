@@ -1,0 +1,150 @@
+<svg width="1000" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #333; }
+      .subtitle { font: 16px sans-serif; fill: #666; }
+      .label { font: 14px sans-serif; fill: #333; text-anchor: middle; }
+      .small-label { font: 12px sans-serif; fill: #666; text-anchor: middle; }
+      .white-text { font: 12px sans-serif; fill: white; text-anchor: middle; }
+      .arrow { stroke: #2196F3; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .docker-blue { fill: #2496ED; stroke: #1976D2; stroke-width: 2; }
+      .k8s-blue { fill: #326CE5; stroke: #1976D2; stroke-width: 2; }
+      .container { fill: #E3F2FD; stroke: #2196F3; stroke-width: 2; rx: 5; }
+      .pod { fill: #F3E5F5; stroke: #9C27B0; stroke-width: 2; rx: 8; }
+      .node { fill: #E8F5E8; stroke: #4CAF50; stroke-width: 2; rx: 10; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="500" y="25" class="title" text-anchor="middle">Container Orchestration: Docker + Kubernetes</text>
+  
+  <!-- Docker Section -->
+  <text x="200" y="55" class="subtitle" text-anchor="middle">🐳 Docker Containerization</text>
+  
+  <!-- Application Code -->
+  <rect x="50" y="80" width="100" height="60" fill="#FF9800" stroke="#F57C00" stroke-width="2" rx="5"/>
+  <text x="100" y="105" class="label" fill="white">📝 App</text>
+  <text x="100" y="120" class="label" fill="white">Code</text>
+  
+  <!-- Dockerfile -->
+  <rect x="200" y="80" width="100" height="60" fill="#607D8B" stroke="#455A64" stroke-width="2" rx="5"/>
+  <text x="250" y="105" class="label" fill="white">📄 Docker</text>
+  <text x="250" y="120" class="label" fill="white">file</text>
+  
+  <!-- Docker Image -->
+  <rect x="350" y="80" width="100" height="60" class="docker-blue" rx="5"/>
+  <text x="400" y="105" class="white-text">🖼️ Docker</text>
+  <text x="400" y="120" class="white-text">Image</text>
+  
+  <!-- Docker Containers -->
+  <rect x="50" y="180" width="400" height="120" class="container"/>
+  <text x="250" y="200" class="label">🐳 Docker Containers</text>
+  
+  <rect x="70" y="220" width="80" height="60" class="docker-blue" rx="5"/>
+  <text x="110" y="245" class="white-text">App 1</text>
+  <text x="110" y="260" class="white-text">Container</text>
+  
+  <rect x="170" y="220" width="80" height="60" class="docker-blue" rx="5"/>
+  <text x="210" y="245" class="white-text">App 2</text>
+  <text x="210" y="260" class="white-text">Container</text>
+  
+  <rect x="270" y="220" width="80" height="60" class="docker-blue" rx="5"/>
+  <text x="310" y="245" class="white-text">App 3</text>
+  <text x="310" y="260" class="white-text">Container</text>
+  
+  <rect x="370" y="220" width="60" height="60" fill="#FFC107" stroke="#FF8F00" stroke-width="2" rx="5"/>
+  <text x="400" y="250" class="label">⚙️ OS</text>
+  
+  <!-- Arrows for Docker flow -->
+  <line x1="150" y1="110" x2="200" y2="110" class="arrow"/>
+  <line x1="300" y1="110" x2="350" y2="110" class="arrow"/>
+  <line x1="400" y1="140" x2="250" y2="180" class="arrow"/>
+  
+  <!-- Kubernetes Section -->
+  <text x="750" y="55" class="subtitle" text-anchor="middle">☸️ Kubernetes Orchestration</text>
+  
+  <!-- Kubernetes Cluster -->
+  <rect x="550" y="80" width="400" height="380" class="node"/>
+  <text x="750" y="105" class="label">☸️ Kubernetes Cluster</text>
+  
+  <!-- Master Node -->
+  <rect x="570" y="120" width="160" height="80" fill="#FF5722" stroke="#D84315" stroke-width="2" rx="8"/>
+  <text x="650" y="140" class="white-text">🎛️ Master Node</text>
+  <text x="580" y="160" class="white-text">• API Server</text>
+  <text x="580" y="175" class="white-text">• Scheduler</text>
+  <text x="580" y="190" class="white-text">• Controller</text>
+  
+  <!-- Worker Nodes -->
+  <rect x="570" y="220" width="360" height="220" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" rx="8"/>
+  <text x="750" y="240" class="label">🖥️ Worker Nodes</text>
+  
+  <!-- Node 1 -->
+  <rect x="590" y="260" width="150" height="160" class="node" rx="5"/>
+  <text x="665" y="280" class="small-label">Node 1</text>
+  
+  <!-- Pods in Node 1 -->
+  <rect x="600" y="290" width="130" height="120" class="pod" rx="5"/>
+  <text x="665" y="310" class="small-label">Pod 1</text>
+  
+  <rect x="610" y="320" width="50" height="40" class="docker-blue" rx="3"/>
+  <text x="635" y="340" style="font: 10px sans-serif; fill: white; text-anchor: middle;">App</text>
+  
+  <rect x="670" y="320" width="50" height="40" class="docker-blue" rx="3"/>
+  <text x="695" y="340" style="font: 10px sans-serif; fill: white; text-anchor: middle;">DB</text>
+  
+  <rect x="610" y="370" width="110" height="30" fill="#FFC107" stroke="#FF8F00" stroke-width="1" rx="3"/>
+  <text x="665" y="385" style="font: 10px sans-serif; fill: #333; text-anchor: middle;">Kubelet + Docker</text>
+  
+  <!-- Node 2 -->
+  <rect x="760" y="260" width="150" height="160" class="node" rx="5"/>
+  <text x="835" y="280" class="small-label">Node 2</text>
+  
+  <!-- Pods in Node 2 -->
+  <rect x="770" y="290" width="130" height="60" class="pod" rx="5"/>
+  <text x="835" y="310" class="small-label">Pod 2</text>
+  
+  <rect x="780" y="320" width="50" height="25" class="docker-blue" rx="3"/>
+  <text x="805" y="335" style="font: 9px sans-serif; fill: white; text-anchor: middle;">API</text>
+  
+  <rect x="840" y="320" width="50" height="25" class="docker-blue" rx="3"/>
+  <text x="865" y="335" style="font: 9px sans-serif; fill: white; text-anchor: middle;">Cache</text>
+  
+  <rect x="770" y="360" width="130" height="50" class="pod" rx="5"/>
+  <text x="835" y="375" class="small-label">Pod 3</text>
+  
+  <rect x="780" y="385" width="110" height="20" class="docker-blue" rx="3"/>
+  <text x="835" y="397" style="font: 9px sans-serif; fill: white; text-anchor: middle;">Worker Service</text>
+  
+  <!-- Services -->
+  <ellipse cx="750" cy="130" rx="60" ry="20" fill="#9C27B0" stroke="#7B1FA2" stroke-width="2"/>
+  <text x="750" y="135" class="white-text">🌐 Services</text>
+  
+  <!-- Load Balancer -->
+  <rect x="480" y="120" width="60" height="40" fill="#FF9800" stroke="#F57C00" stroke-width="2" rx="5"/>
+  <text x="510" y="140" class="white-text">⚖️ LB</text>
+  
+  <!-- Connection arrows -->
+  <line x1="450" y1="240" x2="550" y2="240" class="arrow"/>
+  <line x1="540" y1="140" x2="570" y2="140" class="arrow"/>
+  <line x1="650" y1="200" x2="650" y2="220" class="arrow"/>
+  
+  <!-- Benefits boxes -->
+  <rect x="50" y="350" width="180" height="120" fill="#E3F2FD" stroke="#2196F3" stroke-width="2" rx="8"/>
+  <text x="140" y="370" class="label">🐳 Docker Benefits</text>
+  <text x="60" y="390" class="small-label">• Consistent environments</text>
+  <text x="60" y="405" class="small-label">• Lightweight isolation</text>
+  <text x="60" y="420" class="small-label">• Fast startup times</text>
+  <text x="60" y="435" class="small-label">• Portable applications</text>
+  <text x="60" y="450" class="small-label">• Resource efficiency</text>
+  
+  <rect x="250" y="350" width="180" height="120" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2" rx="8"/>
+  <text x="340" y="370" class="label">☸️ Kubernetes Benefits</text>
+  <text x="260" y="390" class="small-label">• Auto-scaling</text>
+  <text x="260" y="405" class="small-label">• Self-healing</text>
+  <text x="260" y="420" class="small-label">• Load balancing</text>
+  <text x="260" y="435" class="small-label">• Rolling updates</text>
+  <text x="260" y="450" class="small-label">• Service discovery</text>
+</svg>

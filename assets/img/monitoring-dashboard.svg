@@ -1,0 +1,199 @@
+<svg width="1000" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #333; }
+      .subtitle { font: 16px sans-serif; fill: #666; }
+      .label { font: 14px sans-serif; fill: #333; text-anchor: middle; }
+      .small-label { font: 12px sans-serif; fill: #666; text-anchor: middle; }
+      .metric-label { font: 11px sans-serif; fill: #333; }
+      .metric-value { font: bold 14px sans-serif; fill: #2196F3; }
+      .dashboard-bg { fill: #263238; stroke: #37474F; stroke-width: 2; rx: 10; }
+      .panel { fill: #37474F; stroke: #546E7A; stroke-width: 1; rx: 5; }
+      .success { fill: #4CAF50; }
+      .warning { fill: #FF9800; }
+      .error { fill: #F44336; }
+      .info { fill: #2196F3; }
+      .chart-line { stroke: #4CAF50; stroke-width: 2; fill: none; }
+      .chart-area { fill: rgba(76, 175, 80, 0.2); }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="500" y="25" class="title" text-anchor="middle">DevOps Monitoring Dashboard</text>
+  <text x="500" y="45" class="subtitle" text-anchor="middle">Comprehensive Observability: Metrics, Logs, and Traces</text>
+  
+  <!-- Main Dashboard Background -->
+  <rect x="20" y="60" width="960" height="520" class="dashboard-bg"/>
+  
+  <!-- Header with time and status -->
+  <rect x="40" y="80" width="920" height="40" fill="#455A64" rx="5"/>
+  <text x="60" y="100" style="font: 14px sans-serif; fill: white;">🕐 Last Updated: 2025-08-26 12:58:37 UTC</text>
+  <text x="900" y="100" style="font: 14px sans-serif; fill: #4CAF50; text-anchor: end;">🟢 All Systems Operational</text>
+  
+  <!-- Top Row - Key Metrics -->
+  <rect x="40" y="140" width="200" height="100" class="panel"/>
+  <text x="140" y="160" class="label" style="fill: white;">📊 Response Time</text>
+  <text x="140" y="190" class="metric-value" style="fill: #4CAF50; font-size: 24px;">127ms</text>
+  <text x="140" y="210" style="font: 12px sans-serif; fill: #81C784;">↓ 15% from last hour</text>
+  <rect x="60" y="220" width="160" height="4" fill="#4CAF50" rx="2"/>
+  
+  <rect x="260" y="140" width="200" height="100" class="panel"/>
+  <text x="360" y="160" class="label" style="fill: white;">🚀 Throughput</text>
+  <text x="360" y="190" class="metric-value" style="fill: #2196F3; font-size: 24px;">1,247 req/s</text>
+  <text x="360" y="210" style="font: 12px sans-serif; fill: #64B5F6;">↑ 8% from last hour</text>
+  <rect x="280" y="220" width="160" height="4" fill="#2196F3" rx="2"/>
+  
+  <rect x="480" y="140" width="200" height="100" class="panel"/>
+  <text x="580" y="160" class="label" style="fill: white;">💾 CPU Usage</text>
+  <text x="580" y="190" class="metric-value" style="fill: #FF9800; font-size: 24px;">67%</text>
+  <text x="580" y="210" style="font: 12px sans-serif; fill: #FFB74D;">↑ 3% from last hour</text>
+  <rect x="500" y="220" width="107" height="4" fill="#FF9800" rx="2"/>
+  <rect x="607" y="220" width="53" height="4" fill="#E0E0E0" rx="2"/>
+  
+  <rect x="700" y="140" width="200" height="100" class="panel"/>
+  <text x="800" y="160" class="label" style="fill: white;">❌ Error Rate</text>
+  <text x="800" y="190" class="metric-value" style="fill: #4CAF50; font-size: 24px;">0.02%</text>
+  <text x="800" y="210" style="font: 12px sans-serif; fill: #81C784;">↓ 0.01% from last hour</text>
+  <rect x="720" y="220" width="160" height="4" fill="#4CAF50" rx="2"/>
+  
+  <!-- Second Row - Charts -->
+  <rect x="40" y="260" width="460" height="150" class="panel"/>
+  <text x="270" y="280" class="label" style="fill: white;">📈 Application Performance (Last 24h)</text>
+  
+  <!-- Response Time Chart -->
+  <path d="M 60 380 Q 120 360 180 370 T 300 350 T 420 360 T 480 340" class="chart-line"/>
+  <path d="M 60 380 Q 120 360 180 370 T 300 350 T 420 360 T 480 340 L 480 390 L 60 390 Z" class="chart-area"/>
+  
+  <!-- Chart axes -->
+  <line x1="60" y1="300" x2="60" y2="390" stroke="#666" stroke-width="1"/>
+  <line x1="60" y1="390" x2="480" y2="390" stroke="#666" stroke-width="1"/>
+  
+  <!-- Y-axis labels -->
+  <text x="55" y="305" style="font: 10px sans-serif; fill: #999; text-anchor: end;">200ms</text>
+  <text x="55" y="335" style="font: 10px sans-serif; fill: #999; text-anchor: end;">150ms</text>
+  <text x="55" y="365" style="font: 10px sans-serif; fill: #999; text-anchor: end;">100ms</text>
+  <text x="55" y="395" style="font: 10px sans-serif; fill: #999; text-anchor: end;">50ms</text>
+  
+  <!-- X-axis labels -->
+  <text x="60" y="405" style="font: 10px sans-serif; fill: #999; text-anchor: middle;">00:00</text>
+  <text x="180" y="405" style="font: 10px sans-serif; fill: #999; text-anchor: middle;">06:00</text>
+  <text x="300" y="405" style="font: 10px sans-serif; fill: #999; text-anchor: middle;">12:00</text>
+  <text x="420" y="405" style="font: 10px sans-serif; fill: #999; text-anchor: middle;">18:00</text>
+  <text x="480" y="405" style="font: 10px sans-serif; fill: #999; text-anchor: middle;">24:00</text>
+  
+  <!-- Service Status Panel -->
+  <rect x="520" y="260" width="200" height="150" class="panel"/>
+  <text x="620" y="280" class="label" style="fill: white;">🔧 Service Status</text>
+  
+  <!-- Service items -->
+  <circle cx="540" cy="300" r="6" class="success"/>
+  <text x="555" y="305" style="font: 12px sans-serif; fill: white;">API Gateway</text>
+  <text x="690" y="305" style="font: 12px sans-serif; fill: #4CAF50; text-anchor: end;">Healthy</text>
+  
+  <circle cx="540" cy="320" r="6" class="success"/>
+  <text x="555" y="325" style="font: 12px sans-serif; fill: white;">Database</text>
+  <text x="690" y="325" style="font: 12px sans-serif; fill: #4CAF50; text-anchor: end;">Healthy</text>
+  
+  <circle cx="540" cy="340" r="6" class="warning"/>
+  <text x="555" y="345" style="font: 12px sans-serif; fill: white;">Cache Layer</text>
+  <text x="690" y="345" style="font: 12px sans-serif; fill: #FF9800; text-anchor: end;">Warning</text>
+  
+  <circle cx="540" cy="360" r="6" class="success"/>
+  <text x="555" y="365" style="font: 12px sans-serif; fill: white;">Load Balancer</text>
+  <text x="690" y="365" style="font: 12px sans-serif; fill: #4CAF50; text-anchor: end;">Healthy</text>
+  
+  <circle cx="540" cy="380" r="6" class="success"/>
+  <text x="555" y="385" style="font: 12px sans-serif; fill: white;">CDN</text>
+  <text x="690" y="385" style="font: 12px sans-serif; fill: #4CAF50; text-anchor: end;">Healthy</text>
+  
+  <!-- Alerts Panel -->
+  <rect x="740" y="260" width="220" height="150" class="panel"/>
+  <text x="850" y="280" class="label" style="fill: white;">🚨 Recent Alerts</text>
+  
+  <!-- Alert items -->
+  <rect x="750" y="290" width="200" height="25" fill="rgba(255, 152, 0, 0.2)" rx="3"/>
+  <circle cx="760" cy="302" r="4" class="warning"/>
+  <text x="770" y="305" style="font: 11px sans-serif; fill: white;">High memory usage on node-2</text>
+  <text x="940" y="305" style="font: 10px sans-serif; fill: #999; text-anchor: end;">5m ago</text>
+  
+  <rect x="750" y="320" width="200" height="25" fill="rgba(76, 175, 80, 0.2)" rx="3"/>
+  <circle cx="760" cy="332" r="4" class="success"/>
+  <text x="770" y="335" style="font: 11px sans-serif; fill: white;">Deployment completed</text>
+  <text x="940" y="335" style="font: 10px sans-serif; fill: #999; text-anchor: end;">12m ago</text>
+  
+  <rect x="750" y="350" width="200" height="25" fill="rgba(33, 150, 243, 0.2)" rx="3"/>
+  <circle cx="760" cy="362" r="4" class="info"/>
+  <text x="770" y="365" style="font: 11px sans-serif; fill: white;">Auto-scaling triggered</text>
+  <text x="940" y="365" style="font: 10px sans-serif; fill: #999; text-anchor: end;">18m ago</text>
+  
+  <!-- Bottom Row - Logs and Traces -->
+  <rect x="40" y="430" width="460" height="130" class="panel"/>
+  <text x="270" y="450" class="label" style="fill: white;">📋 Recent Logs</text>
+  
+  <!-- Log entries -->
+  <text x="50" y="470" style="font: 10px monospace; fill: #4CAF50;">[INFO]</text>
+  <text x="90" y="470" style="font: 10px monospace; fill: #E0E0E0;">2025-08-26 12:58:32 - API request processed successfully</text>
+  
+  <text x="50" y="485" style="font: 10px monospace; fill: #FF9800;">[WARN]</text>
+  <text x="90" y="485" style="font: 10px monospace; fill: #E0E0E0;">2025-08-26 12:58:28 - Cache miss for key: user_session_123</text>
+  
+  <text x="50" y="500" style="font: 10px monospace; fill: #4CAF50;">[INFO]</text>
+  <text x="90" y="500" style="font: 10px monospace; fill: #E0E0E0;">2025-08-26 12:58:25 - Database connection pool: 8/10 active</text>
+  
+  <text x="50" y="515" style="font: 10px monospace; fill: #2196F3;">[DEBUG]</text>
+  <text x="90" y="515" style="font: 10px monospace; fill: #E0E0E0;">2025-08-26 12:58:20 - Kubernetes pod scaling event triggered</text>
+  
+  <text x="50" y="530" style="font: 10px monospace; fill: #4CAF50;">[INFO]</text>
+  <text x="90" y="530" style="font: 10px monospace; fill: #E0E0E0;">2025-08-26 12:58:15 - Health check passed for all services</text>
+  
+  <text x="50" y="545" style="font: 10px monospace; fill: #FF9800;">[WARN]</text>
+  <text x="90" y="545" style="font: 10px monospace; fill: #E0E0E0;">2025-08-26 12:58:10 - SSL certificate expires in 30 days</text>
+  
+  <!-- Distributed Tracing Panel -->
+  <rect x="520" y="430" width="440" height="130" class="panel"/>
+  <text x="740" y="450" class="label" style="fill: white;">🔍 Distributed Tracing</text>
+  
+  <!-- Trace visualization -->
+  <text x="530" y="470" style="font: 12px sans-serif; fill: #E0E0E0;">Trace ID: abc123def456</text>
+  <text x="900" y="470" style="font: 12px sans-serif; fill: #E0E0E0; text-anchor: end;">Total: 245ms</text>
+  
+  <!-- Trace spans -->
+  <rect x="530" y="480" width="120" height="15" fill="#2196F3" rx="2"/>
+  <text x="535" y="490" style="font: 10px sans-serif; fill: white;">API Gateway (45ms)</text>
+  
+  <rect x="655" y="480" width="80" height="15" fill="#4CAF50" rx="2"/>
+  <text x="660" y="490" style="font: 10px sans-serif; fill: white;">Auth (20ms)</text>
+  
+  <rect x="740" y="480" width="150" height="15" fill="#FF9800" rx="2"/>
+  <text x="745" y="490" style="font: 10px sans-serif; fill: white;">Database Query (120ms)</text>
+  
+  <rect x="895" y="480" width="60" height="15" fill="#9C27B0" rx="2"/>
+  <text x="900" y="490" style="font: 10px sans-serif; fill: white;">Cache (15ms)</text>
+  
+  <!-- Second trace -->
+  <text x="530" y="510" style="font: 12px sans-serif; fill: #E0E0E0;">Trace ID: def789ghi012</text>
+  <text x="900" y="510" style="font: 12px sans-serif; fill: #E0E0E0; text-anchor: end;">Total: 89ms</text>
+  
+  <rect x="530" y="520" width="60" height="15" fill="#2196F3" rx="2"/>
+  <text x="535" y="530" style="font: 10px sans-serif; fill: white;">API (25ms)</text>
+  
+  <rect x="595" y="520" width="40" height="15" fill="#4CAF50" rx="2"/>
+  <text x="600" y="530" style="font: 10px sans-serif; fill: white;">Auth (12ms)</text>
+  
+  <rect x="640" y="520" width="100" height="15" fill="#4CAF50" rx="2"/>
+  <text x="645" y="530" style="font: 10px sans-serif; fill: white;">Cache Hit (35ms)</text>
+  
+  <rect x="745" y="520" width="50" height="15" fill="#9C27B0" rx="2"/>
+  <text x="750" y="530" style="font: 10px sans-serif; fill: white;">Response (17ms)</text>
+  
+  <!-- Legend -->
+  <text x="530" y="550" style="font: 10px sans-serif; fill: #999;">Legend:</text>
+  <rect x="570" y="543" width="12" height="8" fill="#2196F3"/>
+  <text x="585" y="550" style="font: 10px sans-serif; fill: #999;">API</text>
+  <rect x="610" y="543" width="12" height="8" fill="#4CAF50"/>
+  <text x="625" y="550" style="font: 10px sans-serif; fill: #999;">Service</text>
+  <rect x="660" y="543" width="12" height="8" fill="#FF9800"/>
+  <text x="675" y="550" style="font: 10px sans-serif; fill: #999;">Database</text>
+  <rect x="720" y="543" width="12" height="8" fill="#9C27B0"/>
+  <text x="735" y="550" style="font: 10px sans-serif; fill: #999;">Cache</text>
+</svg>

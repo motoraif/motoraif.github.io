@@ -124,7 +124,7 @@ deploy:
 
 ## Infrastructure as Code (IaC)
 
-![Infrastructure as Code](/assets/img/infrastructure-as-code.png)
+![Infrastructure as Code](/assets/img/infrastructure-as-code.svg)
 *Infrastructure as Code workflow showing version-controlled infrastructure*
 
 Modern DevOps treats infrastructure as code, making it version-controlled, testable, and repeatable:
@@ -230,7 +230,7 @@ resource "aws_ecs_service" "api_service" {
 
 ## Containerization and Orchestration
 
-![Docker and Kubernetes](/assets/img/docker-kubernetes.png)
+![Docker and Kubernetes](/assets/img/docker-kubernetes.svg)
 *Container orchestration with Docker and Kubernetes*
 
 ### **Docker Best Practices**
@@ -337,7 +337,7 @@ spec:
 
 ## Monitoring and Observability
 
-![Monitoring Dashboard](/assets/img/monitoring-dashboard.png)
+![Monitoring Dashboard](/assets/img/monitoring-dashboard.svg)
 *Comprehensive monitoring dashboard showing key DevOps metrics*
 
 ### **The Three Pillars of Observability**
@@ -409,7 +409,7 @@ sdk.start();
 
 ## Security in DevOps (DevSecOps)
 
-![DevSecOps](/assets/img/devsecops.png)
+![DevSecOps](/assets/img/devsecops.svg)
 *Security integrated throughout the DevOps pipeline*
 
 ### **Security Scanning Pipeline**
@@ -469,7 +469,7 @@ SECRET=$(aws secretsmanager get-secret-value \
 
 ## GitOps: The Future of Deployment
 
-![GitOps Workflow](/assets/img/gitops-workflow.png)
+![GitOps Workflow](/assets/img/gitops-workflow.svg)
 *GitOps workflow showing Git as the single source of truth*
 
 ### **ArgoCD Configuration**
@@ -500,7 +500,7 @@ spec:
 
 ## DevOps Metrics and KPIs
 
-![DevOps Metrics](/assets/img/devops-metrics.png)
+![DevOps Metrics](/assets/img/devops-metrics.svg)
 *Key DevOps metrics dashboard showing DORA metrics*
 
 ### **DORA Metrics Implementation**
@@ -618,7 +618,7 @@ Resources:
 
 ## DevOps Culture and Best Practices
 
-![DevOps Culture](/assets/img/devops-culture.png)
+![DevOps Culture](/assets/img/devops-culture.svg)
 *The cultural aspects of DevOps: collaboration, shared responsibility, and continuous learning*
 
 ### **Building a DevOps Culture**
@@ -662,7 +662,7 @@ EOF
 
 ## The Future of DevOps
 
-![Future of DevOps](/assets/img/future-devops.png)
+![Future of DevOps](/assets/img/future-devops.svg)
 *Emerging trends in DevOps: AI/ML, serverless, and edge computing*
 
 ### **Emerging Trends**
