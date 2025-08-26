@@ -2,5 +2,17 @@
 
 source "https://rubygems.org"
 
-gemspec
+# GitHub Pages compatible setup
+gem "github-pages", group: :jekyll_plugins
+
+# Additional plugins
+gem "jekyll-paginate"
+gem "jekyll-sitemap"
+
+# Development dependencies
+gem "bundler"
+gem "rake"
+
+# Testing (optional)
+gem "html-proofer", group: :test
 
