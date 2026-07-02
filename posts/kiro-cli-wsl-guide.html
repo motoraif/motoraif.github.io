@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Kiro CLI on WSL: Setup, Tips & Real-World Examples - Mohammed Toraif</title>
+    <meta name="description" content="A practical guide to setting up and using Kiro CLI on Windows Subsystem for Linux (WSL). Real-world examples including CDK deployments, website builds, and AWS automation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117; --bg-secondary: #1a1d27; --text: #e4e4e7;
+            --text-muted: #a1a1aa; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --border: #27272a; --card-bg: #18181b; --green: #22c55e; --yellow: #eab308;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(15, 17, 23, 0.85); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border); z-index: 1000; padding: 1rem 0;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+        nav a:hover { color: var(--text); }
+        nav .logo { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+        article { padding: 8rem 0 4rem; }
+        article h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; line-height: 1.3; }
+        article .meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        article h2 { font-size: 1.4rem; font-weight: 600; margin: 3rem 0 1rem; color: var(--text); }
+        article h3 { font-size: 1.1rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--text); }
+        article p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 0.95rem; }
+        article ul, article ol { margin: 1rem 0 1.5rem; padding-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+        article li { margin-bottom: 0.5rem; }
+        article code {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-secondary); padding: 0.2rem 0.5rem;
+            border-radius: 4px; font-size: 0.82rem; color: var(--accent-hover);
+        }
+        article pre {
+            background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px;
+            overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--border);
+            font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; line-height: 1.7;
+        }
+        article pre code { background: none; padding: 0; color: var(--text); }
+        article strong { color: var(--text); }
+        article a { color: var(--accent); text-decoration: none; }
+        article a:hover { color: var(--accent-hover); }
+        .callout {
+            background: var(--bg-secondary); border-left: 3px solid var(--accent);
+            padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0;
+            font-size: 0.9rem; color: var(--text-muted);
+        }
+        .callout strong { color: var(--text); }
+        .demo-box {
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;
+        }
+        .demo-box h4 { font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--green); }
+        .demo-box p { margin-bottom: 0.75rem; font-size: 0.9rem; }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+        .tag-sm {
+            background: var(--bg-secondary); border: 1px solid var(--border);
+            padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; color: var(--text-muted);
+        }
+        footer { padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+        @media (max-width: 768px) {
+            article { padding: 6rem 0 3rem; }
+            article h1 { font-size: 1.5rem; }
+            .container { padding: 0 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+<nav><div class="container"><a href="/" class="logo">Mohammed Toraif</a><a href="/#writing">← Back</a></div></nav>
+
+<article><div class="container">
+
+<h1>Using Kiro CLI on WSL: Setup, Tips & Real-World Examples</h1>
+<div class="meta">July 2, 2026 · 8 min read</div>
+
+<p>I've been using <strong>Kiro CLI</strong> as my primary AI-powered development assistant on Windows Subsystem for Linux (WSL), and it has fundamentally changed how I work. This post covers how to set it up, what it can do, and real examples of what I've built with it.</p>
+
+<h2>What is Kiro?</h2>
+
+<p>Kiro is an AI coding assistant that runs directly in your terminal. Unlike browser-based AI tools, Kiro operates within your actual development environment — it can read your files, run commands, interact with AWS, and make changes to your codebase in real-time.</p>
+
+<p>Key capabilities:</p>
+<ul>
+    <li><strong>File system access</strong> — reads, creates, and edits files directly</li>
+    <li><strong>Terminal execution</strong> — runs shell commands and scripts</li>
+    <li><strong>AWS integration</strong> — deploys infrastructure, queries services</li>
+    <li><strong>Code intelligence</strong> — understands project structure, finds symbols, navigates code</li>
+    <li><strong>Multi-step tasks</strong> — handles complex workflows autonomously</li>
+</ul>
+
+<h2>Setting Up Kiro on WSL</h2>
+
+<h3>Prerequisites</h3>
+
+<p>You need WSL2 with Ubuntu (22.04 or later) running on Windows 10/11:</p>
+
+<pre><code># Check your WSL version
+wsl --version
+
+# My setup
+# Ubuntu 22.04.5 LTS
+# Kernel: 6.6.87.2-microsoft-standard-WSL2</code></pre>
+
+<h3>Installation</h3>
+
+<pre><code># Download and install Kiro CLI
+curl -fsSL https://kiro.dev/install.sh | sh
+
+# Verify installation
+kiro --version
+# 0.6.0
+
+# Start a chat session
+kiro chat</code></pre>
+
+<h3>AWS Configuration</h3>
+
+<p>If you're working with AWS (and you should be), make sure your credentials are configured in WSL:</p>
+
+<pre><code># Your ~/.aws/config should have profiles
+[profile my-dev]
+region = eu-central-1
+role_arn = arn:aws:iam::ACCOUNT_ID:role/MyRole
+source_profile = default</code></pre>
+
+<div class="callout">
+    <strong>MFA Tip:</strong> If your AWS profile requires MFA, Kiro's terminal can't handle interactive prompts. Use a helper script with <code>boto3</code> to assume the role and export temporary credentials before running CDK deploys.
+</div>
+
+<h3>Recommended WSL Setup</h3>
+
+<pre><code># Tools that work great alongside Kiro
+sudo apt update
+sudo apt install -y python3-pip nodejs npm
+
+# Node.js (for CDK projects)
+nvm install 22
+
+# AWS CDK
+npm install -g aws-cdk
+
+# Python tools
+pip3 install boto3</code></pre>
+
+<h2>What Can You Achieve?</h2>
+
+<p>Here are real examples of tasks I've accomplished with Kiro in single sessions:</p>
+
+<div class="demo-box">
+    <h4>Demo 1: Full-Stack Platform in Under an Hour</h4>
+    <p>I asked Kiro to build a <strong>government KPI monitoring platform</strong>. In a single conversation, it:</p>
+    <ul>
+        <li>Created a 5-stack CDK application (TypeScript)</li>
+        <li>Built S3 data lake with raw/processed/curated zones</li>
+        <li>Set up Glue ETL, Step Functions, EventBridge pipelines</li>
+        <li>Deployed API Gateway + Lambda + DynamoDB</li>
+        <li>Provisioned Athena workgroups and Redshift Serverless</li>
+        <li>Generated sample data and loaded it</li>
+        <li>Created QuickSight dashboards with live visuals</li>
+        <li>Wrote a 15-section architecture document</li>
+    </ul>
+    <div class="tag-row">
+        <span class="tag-sm">CDK</span>
+        <span class="tag-sm">Lambda</span>
+        <span class="tag-sm">DynamoDB</span>
+        <span class="tag-sm">Athena</span>
+        <span class="tag-sm">QuickSight</span>
+        <span class="tag-sm">Step Functions</span>
+    </div>
+</div>
+
+<div class="demo-box">
+    <h4>Demo 2: Website Redesign & Deployment</h4>
+    <p>Redesigned my personal website from a Jekyll blog theme to a clean, minimal single-page portfolio:</p>
+    <ul>
+        <li>Analyzed a reference site for design inspiration</li>
+        <li>Built a complete HTML/CSS site from scratch</li>
+        <li>Migrated existing blog posts to standalone pages</li>
+        <li>Extracted certifications from my CV (PDF parsing)</li>
+        <li>Committed and pushed to GitHub Pages</li>
+        <li>Iterated on feedback in real-time (add buttons, remove sections, etc.)</li>
+    </ul>
+    <div class="tag-row">
+        <span class="tag-sm">HTML/CSS</span>
+        <span class="tag-sm">GitHub Pages</span>
+        <span class="tag-sm">Responsive Design</span>
+    </div>
+</div>
+
+<div class="demo-box">
+    <h4>Demo 3: AWS Infrastructure Automation</h4>
+    <p>Automated complex AWS tasks that would normally require multiple console sessions:</p>
+    <ul>
+        <li>Assumed IAM roles with MFA programmatically</li>
+        <li>Bootstrapped and deployed CDK across accounts</li>
+        <li>Created Glue tables and ran Athena queries</li>
+        <li>Managed QuickSight resources via API (data sources, datasets, dashboards)</li>
+        <li>Troubleshot and fixed deployment errors in real-time</li>
+        <li>Cleaned up all resources when the demo was over</li>
+    </ul>
+    <div class="tag-row">
+        <span class="tag-sm">CloudFormation</span>
+        <span class="tag-sm">IAM</span>
+        <span class="tag-sm">S3</span>
+        <span class="tag-sm">Glue</span>
+        <span class="tag-sm">QuickSight</span>
+    </div>
+</div>
+
+<div class="demo-box">
+    <h4>Demo 4: Research & Architecture Design</h4>
+    <p>Used Kiro for solution architecture planning:</p>
+    <ul>
+        <li>Researched backup strategies across multiple platforms</li>
+        <li>Compared options (GitHub vs S3 vs rclone) with pros/cons</li>
+        <li>Designed multi-account AWS architecture with ASCII diagrams</li>
+        <li>Produced cost estimates and phased implementation plans</li>
+        <li>Generated compliance mappings and onboarding checklists</li>
+    </ul>
+    <div class="tag-row">
+        <span class="tag-sm">Architecture</span>
+        <span class="tag-sm">Documentation</span>
+        <span class="tag-sm">Planning</span>
+    </div>
+</div>
+
+<h2>Tips for Effective Use</h2>
+
+<h3>1. Be Direct with Requests</h3>
+<p>Kiro works best when you're clear about what you want. Instead of "can you help me with my website?", say "redesign my website as a single-page portfolio, look at example.com for reference."</p>
+
+<h3>2. Iterate Quickly</h3>
+<p>Don't try to get everything perfect in one prompt. Deploy first, then iterate:</p>
+<pre><code># First pass
+"build the platform and deploy it"
+
+# Then refine
+"remove the contact section"
+"make github a button also"
+"fix 15+ years not 20+"</code></pre>
+
+<h3>3. Let It Handle MFA/Auth</h3>
+<p>For AWS deployments with MFA, give Kiro your token code when asked. It will handle the assume-role flow and pass credentials to subsequent commands.</p>
+
+<h3>4. Use It for Cleanup Too</h3>
+<p>Kiro is excellent at tearing down infrastructure. It knows the dependency order, empties S3 buckets before deleting stacks, and handles failed CloudFormation states.</p>
+
+<h3>5. Trust the Multi-Step Process</h3>
+<p>Complex tasks often require 10-20 tool calls. Kiro will synthesize CDK, find errors, fix them, redeploy, check logs, and iterate — all without you needing to intervene.</p>
+
+<h2>Limitations to Be Aware Of</h2>
+
+<ul>
+    <li><strong>No interactive prompts</strong> — Can't handle tools that require stdin input (like password prompts). Use non-interactive alternatives.</li>
+    <li><strong>Session tokens expire</strong> — For long-running tasks, AWS STS tokens may expire. Keep a fresh MFA code handy.</li>
+    <li><strong>Large outputs</strong> — Very large command outputs may be truncated. Pipe to <code>head</code> or <code>tail</code> when needed.</li>
+    <li><strong>Network-dependent</strong> — Requires internet connectivity for both the AI service and your AWS/GitHub operations.</li>
+</ul>
+
+<h2>My Workflow</h2>
+
+<p>Here's how I typically work with Kiro on WSL:</p>
+
+<ol>
+    <li><strong>Open Windows Terminal</strong> → WSL Ubuntu</li>
+    <li><strong>Navigate to project</strong> → <code>cd ~/my-project</code></li>
+    <li><strong>Start Kiro</strong> → <code>kiro chat</code></li>
+    <li><strong>Describe the task</strong> — architecture, code, deployment, whatever</li>
+    <li><strong>Review and iterate</strong> — approve deployments, provide MFA codes, adjust requirements</li>
+    <li><strong>Done</strong> — infrastructure deployed, code committed, docs written</li>
+</ol>
+
+<p>The entire flow stays in the terminal. No context-switching between browser tabs, consoles, or IDEs. Everything happens in one place.</p>
+
+<h2>Conclusion</h2>
+
+<p>Kiro on WSL gives you an AI pair programmer that actually lives in your environment. It's not generating code snippets for you to copy-paste — it's building, deploying, and iterating alongside you. For cloud engineers and solutions architects, this is a significant productivity multiplier.</p>
+
+<p>The combination of WSL's Linux environment, AWS CLI access, and Kiro's ability to chain complex operations makes it possible to go from idea to deployed infrastructure in minutes rather than hours.</p>
+
+<div class="callout">
+    <strong>Get started:</strong> Visit <a href="https://kiro.dev">kiro.dev</a> to install Kiro CLI and try it in your own WSL environment.
+</div>
+
+</div></article>
+
+<footer><div class="container"><p>Mohammed Toraif · Bahrain · 2026</p></div></footer>
+</body>
+</html>
