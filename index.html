@@ -1,5 +1,549 @@
----
-layout: home
-title: Hi..
-subtitle: This is where I will be putting some useful technology stuff!
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Toraif - Cloud Solutions Architect</title>
+    <meta name="description" content="Mohammed Toraif - Cloud Solutions Architect based in Bahrain. AWS, AI/ML, Serverless, and Infrastructure as Code.">
+    <meta name="keywords" content="Mohammed Toraif, AWS, Cloud Architect, Bahrain, Solutions Architect, Serverless, AI, Machine Learning">
+    <meta property="og:title" content="Mohammed Toraif - Cloud Solutions Architect">
+    <meta property="og:description" content="Cloud Solutions Architect based in Bahrain. AWS, AI/ML, Serverless, and Infrastructure as Code.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toraif.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117;
+            --bg-secondary: #1a1d27;
+            --text: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --border: #27272a;
+            --card-bg: #18181b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 0 5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 550px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .hero-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s;
+        }
+
+        .hero-links a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        section h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        /* Expertise Tags */
+        .expertise-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Content Lists */
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+
+        .content-list .title {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .content-list .title:hover {
+            color: var(--accent-hover);
+        }
+
+        .content-list .meta {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+        }
+
+        .project-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .project-card .tech {
+            margin-top: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .cert-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .cert-item .cert-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-item .cert-name {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 7rem 0 3rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            nav .nav-links {
+                gap: 1rem;
+            }
+
+            nav .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .nav-links {
+                gap: 0.75rem;
+            }
+
+            .container {
+                padding: 0 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="#" class="logo">Mohammed Toraif</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#writing">Writing</a></li>
+            <li><a href="#speaking">Speaking</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <img src="assets/img/Self.jpg" alt="Mohammed Toraif" class="hero-photo">
+            <div class="hero-text">
+                <h1>Mohammed Toraif</h1>
+                <p class="subtitle">Cloud Solutions Architect · Bahrain 🇧🇭</p>
+                <p class="bio">I design and build scalable cloud solutions on AWS. 20+ years in technology, currently focused on serverless architectures, AI/ML, and helping organizations modernize their infrastructure in the Middle East.</p>
+                <div class="hero-links">
+                    <a href="https://linkedin.com/in/toraif" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/motoraif" target="_blank">GitHub</a>
+                    <a href="https://twitter.com/toraif" target="_blank">Twitter</a>
+                    <a href="mailto:mohd@toraif.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="about">
+    <div class="container">
+        <h2>Expertise</h2>
+        <div class="expertise-grid">
+            <span class="tag">AWS Architecture</span>
+            <span class="tag">Serverless</span>
+            <span class="tag">Amazon Bedrock / AI</span>
+            <span class="tag">Infrastructure as Code</span>
+            <span class="tag">CDK / CloudFormation</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">CI/CD Pipelines</span>
+            <span class="tag">Data Engineering</span>
+            <span class="tag">Cost Optimization</span>
+            <span class="tag">Security & Compliance</span>
+            <span class="tag">Python</span>
+            <span class="tag">TypeScript</span>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="container">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Government KPI Platform</h3>
+                <p>National KPI monitoring platform for Prime Minister's Office. Multi-ministry data aggregation with QuickSight dashboards.</p>
+                <div class="tech">CDK · Athena · QuickSight · Lambda · DynamoDB</div>
+            </div>
+            <div class="project-card">
+                <h3>Serverless AI Architecture</h3>
+                <p>Production AI applications using Amazon Bedrock with RAG patterns, vector search, and multi-model orchestration.</p>
+                <div class="tech">Bedrock · Lambda · OpenSearch · S3</div>
+            </div>
+            <div class="project-card">
+                <h3>Cloud Migration (Enterprise)</h3>
+                <p>Large-scale enterprise migration to AWS including Active Directory, Windows workloads, and Microsoft licensing optimization.</p>
+                <div class="tech">AWS Migration Hub · DMS · AD Connector</div>
+            </div>
+            <div class="project-card">
+                <h3>Multi-Account Landing Zone</h3>
+                <p>AWS Organizations setup with SCPs, cross-account access patterns, and centralized security monitoring for government clients.</p>
+                <div class="tech">Organizations · Control Tower · GuardDuty</div>
+            </div>
+            <div class="project-card">
+                <h3>Data Lakehouse</h3>
+                <p>Centralized data lakehouse architecture with Glue ETL, Lake Formation governance, and Redshift Serverless analytics.</p>
+                <div class="tech">S3 · Glue · Lake Formation · Redshift</div>
+            </div>
+            <div class="project-card">
+                <h3>Digital Channels Platform</h3>
+                <p>Omnichannel digital communications platform handling messaging, notifications, and customer engagement at scale.</p>
+                <div class="tech">API Gateway · SQS · Lambda · DynamoDB</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certifications">
+    <div class="container">
+        <h2>Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-item">
+                <div class="cert-icon">☁️</div>
+                <div class="cert-name">AWS Solutions Architect</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">🔒</div>
+                <div class="cert-name">AWS Security Specialty</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">🤖</div>
+                <div class="cert-name">AWS AI Practitioner</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">🏗️</div>
+                <div class="cert-name">AWS DevOps Engineer</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">📊</div>
+                <div class="cert-name">AWS Data Analytics</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">🌐</div>
+                <div class="cert-name">AWS Community Builder</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="writing">
+    <div class="container">
+        <h2>Writing</h2>
+        <ul class="content-list">
+            <li>
+                <a href="#" class="title">My Journey as an AWS Community Builder - Hello from Bahrain!</a>
+                <span class="meta">Aug 2025</span>
+            </li>
+            <li>
+                <a href="#" class="title">Microsoft Licensing on AWS: A Complete Migration Guide</a>
+                <span class="meta">Sep 2025</span>
+            </li>
+            <li>
+                <a href="#" class="title">AWS AI Mechanisms: A Comprehensive Guide</a>
+                <span class="meta">Aug 2025</span>
+            </li>
+            <li>
+                <a href="#" class="title">Modern DevOps Practices: Complete Guide</a>
+                <span class="meta">Aug 2025</span>
+            </li>
+            <li>
+                <a href="#" class="title">Docker Quick Guide: From Zero to Production</a>
+                <span class="meta">Jan 2021</span>
+            </li>
+            <li>
+                <a href="#" class="title">Active Directory Forest Migration to AWS</a>
+                <span class="meta">Feb 2021</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="speaking">
+    <div class="container">
+        <h2>Speaking & Community</h2>
+        <ul class="content-list">
+            <li>
+                <a href="#" class="title">AWS Community Builder Program</a>
+                <span class="meta">Member since 2025</span>
+            </li>
+            <li>
+                <a href="#" class="title">AWS Partner Solutions Architecture</a>
+                <span class="meta">Bahrain & GCC</span>
+            </li>
+            <li>
+                <a href="#" class="title">Cloud Architecture Workshops</a>
+                <span class="meta">Enterprise Clients</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <h2>Get in Touch</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+            Based in Bahrain. Always happy to discuss cloud architecture, collaborate on projects, or meet over coffee. ☕
+        </p>
+        <div class="hero-links">
+            <a href="mailto:mohd@toraif.com">mohd@toraif.com</a>
+            <a href="https://linkedin.com/in/toraif" target="_blank">LinkedIn</a>
+            <a href="https://github.com/motoraif" target="_blank">GitHub</a>
+            <a href="https://twitter.com/toraif" target="_blank">Twitter</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>Mohammed Toraif · Bahrain · 2025</p>
+    </div>
+</footer>
+
+</body>
+</html>
