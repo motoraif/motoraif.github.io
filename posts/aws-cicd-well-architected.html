@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD on AWS - Options & Well-Architected Best Practices - Mohammed Toraif</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117; --bg-secondary: #1a1d27; --text: #e4e4e7;
+            --text-muted: #a1a1aa; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --border: #27272a; --card-bg: #18181b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(15, 17, 23, 0.85); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border); z-index: 1000; padding: 1rem 0;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+        nav a:hover { color: var(--text); }
+        nav .logo { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+        article { padding: 8rem 0 4rem; }
+        article h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        article .meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        article h2 { font-size: 1.3rem; font-weight: 600; margin: 2.5rem 0 1rem; }
+        article h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+        article p { margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95rem; }
+        article ul, article ol { margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+        article li { margin-bottom: 0.5rem; }
+        article code { background: var(--bg-secondary); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.85rem; }
+        article pre { background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--border); }
+        article pre code { background: none; padding: 0; }
+        article strong { color: var(--text); }
+        article a { color: var(--accent); text-decoration: none; }
+        article a:hover { color: var(--accent-hover); }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
+        .comparison-table th, .comparison-table td { padding: 0.75rem; border: 1px solid var(--border); text-align: left; color: var(--text-muted); }
+        .comparison-table th { background: var(--bg-secondary); color: var(--text); font-weight: 600; }
+        .comparison-table tr:hover { background: var(--bg-secondary); }
+        .pillar-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; }
+        .pillar-card h4 { color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .pillar-card p { margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .pillar-card ul { margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.9rem; }
+        .pillar-card li { margin-bottom: 0.3rem; }
+        .tag { display: inline-block; background: var(--bg-secondary); border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; color: var(--accent); margin-right: 0.5rem; margin-bottom: 0.3rem; }
+        footer { padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+<nav><div class="container"><a href="/" class="logo">Mohammed Toraif</a><a href="/#writing">← Back to Writing</a></div></nav>
+<article><div class="container">
+<h1>CI/CD on AWS — Options & Well-Architected Best Practices</h1>
+<div class="meta">2026-07-11 · 10 min read</div>
+
+<p>Continuous Integration and Continuous Delivery (CI/CD) is the backbone of modern software delivery. AWS provides a rich ecosystem of native and third-party CI/CD tools, and the <strong>AWS Well-Architected Framework</strong> offers guiding principles to ensure your pipelines are secure, reliable, cost-efficient, and operationally excellent.</p>
+
+<p>This guide covers all the CI/CD options available on AWS, when to use each, and how to align your pipeline architecture with Well-Architected best practices.</p>
+
+<h2>AWS Native CI/CD Services</h2>
+
+<p>AWS offers a fully managed CI/CD suite that integrates natively with the broader AWS ecosystem. Here's how each service fits into the pipeline:</p>
+
+<table class="comparison-table">
+<thead>
+<tr><th>Service</th><th>Role</th><th>Key Features</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>CodePipeline</strong></td><td>Orchestration</td><td>Visual workflow, stage/action model, parallel actions, cross-account/cross-region deployments</td></tr>
+<tr><td><strong>CodeBuild</strong></td><td>Build & Test</td><td>Fully managed, pay-per-minute, custom Docker environments, caching, batch builds</td></tr>
+<tr><td><strong>CodeDeploy</strong></td><td>Deployment</td><td>EC2, ECS, Lambda targets; blue/green, rolling, canary strategies; automatic rollback</td></tr>
+<tr><td><strong>CodeCommit</strong></td><td>Source (deprecated)</td><td>Git hosting (no new customers as of 2024 — migrate to GitHub, GitLab, or Bitbucket)</td></tr>
+<tr><td><strong>CodeArtifact</strong></td><td>Artifact Management</td><td>Package repositories for npm, PyPI, Maven, NuGet; upstream proxying</td></tr>
+<tr><td><strong>CodeCatalyst</strong></td><td>Unified DevOps</td><td>Integrated IDE, CI/CD workflows, issue tracking, dev environments</td></tr>
+</tbody>
+</table>
+
+<h3>CodePipeline — The Orchestrator</h3>
+
+<p>CodePipeline defines the stages of your delivery workflow: Source → Build → Test → Deploy. It connects to source providers (GitHub, Bitbucket, S3, ECR), triggers builds, runs tests, requires manual approvals, and deploys to targets.</p>
+
+<pre><code># Example: CodePipeline with CloudFormation (simplified)
+Pipeline:
+  Type: AWS::CodePipeline::Pipeline
+  Properties:
+    Stages:
+      - Name: Source
+        Actions:
+          - Name: GitHubSource
+            ActionTypeId:
+              Category: Source
+              Provider: CodeStarSourceConnection
+            Configuration:
+              ConnectionArn: !Ref GitHubConnection
+              FullRepositoryId: "org/repo"
+              BranchName: main
+      - Name: Build
+        Actions:
+          - Name: CodeBuild
+            ActionTypeId:
+              Category: Build
+              Provider: CodeBuild
+            Configuration:
+              ProjectName: !Ref BuildProject
+      - Name: Deploy
+        Actions:
+          - Name: DeployToECS
+            ActionTypeId:
+              Category: Deploy
+              Provider: ECS
+            Configuration:
+              ClusterName: !Ref Cluster
+              ServiceName: !Ref Service</code></pre>
+
+<h3>CodeBuild — Build & Test</h3>
+
+<p>CodeBuild compiles code, runs tests, and produces artifacts. It scales automatically with no servers to manage. You define build steps in a <code>buildspec.yml</code> file:</p>
+
+<pre><code>version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+  pre_build:
+    commands:
+      - npm ci
+      - echo "Logging in to ECR..."
+      - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_URI
+  build:
+    commands:
+      - npm run test
+      - npm run build
+      - docker build -t $ECR_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION .
+      - docker push $ECR_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION
+  post_build:
+    commands:
+      - echo "Build completed on $(date)"
+artifacts:
+  files:
+    - imagedefinitions.json
+cache:
+  paths:
+    - node_modules/**/*</code></pre>
+
+<h3>CodeDeploy — Deployment Strategies</h3>
+
+<p>CodeDeploy supports multiple deployment strategies depending on your compute platform:</p>
+
+<table class="comparison-table">
+<thead>
+<tr><th>Strategy</th><th>Platform</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>In-Place (Rolling)</strong></td><td>EC2/On-Premises</td><td>Updates instances one batch at a time; brief capacity reduction</td></tr>
+<tr><td><strong>Blue/Green</strong></td><td>EC2, ECS</td><td>Provisions new environment, shifts traffic, keeps old as rollback</td></tr>
+<tr><td><strong>Canary</strong></td><td>Lambda, ECS</td><td>Routes small % of traffic to new version first (e.g., 10% for 5 min)</td></tr>
+<tr><td><strong>Linear</strong></td><td>Lambda, ECS</td><td>Gradually shifts traffic in equal increments over time</td></tr>
+<tr><td><strong>All-at-Once</strong></td><td>Lambda</td><td>Immediate full traffic shift — fast but no gradual rollback</td></tr>
+</tbody>
+</table>
+
+<h3>CodeCatalyst — The Unified Experience</h3>
+
+<p>Amazon CodeCatalyst is a newer unified DevOps service that combines project management, CI/CD workflows, cloud development environments, and team collaboration in a single tool. It's ideal for teams wanting a GitHub-like experience fully integrated with AWS.</p>
+
+<h2>Third-Party CI/CD Options on AWS</h2>
+
+<p>Many teams prefer established third-party tools for portability, ecosystem, or familiarity:</p>
+
+<table class="comparison-table">
+<thead>
+<tr><th>Tool</th><th>Hosting Model</th><th>Best For</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>GitHub Actions</strong></td><td>SaaS + self-hosted runners on EC2</td><td>Teams already on GitHub; excellent marketplace of actions</td></tr>
+<tr><td><strong>GitLab CI/CD</strong></td><td>SaaS or self-hosted on EC2/EKS</td><td>All-in-one platform; strong security scanning</td></tr>
+<tr><td><strong>Jenkins</strong></td><td>Self-hosted on EC2/EKS</td><td>Maximum flexibility; large plugin ecosystem; complex maintenance</td></tr>
+<tr><td><strong>CircleCI</strong></td><td>SaaS + self-hosted runners</td><td>Fast builds, good parallelism, Docker-first</td></tr>
+<tr><td><strong>Terraform Cloud / Spacelift</strong></td><td>SaaS</td><td>Infrastructure-as-code pipelines specifically</td></tr>
+<tr><td><strong>Argo CD</strong></td><td>Self-hosted on EKS</td><td>GitOps-native Kubernetes deployments</td></tr>
+<tr><td><strong>Flux CD</strong></td><td>Self-hosted on EKS</td><td>Lightweight GitOps for Kubernetes</td></tr>
+</tbody>
+</table>
+
+<h3>When to Choose Native vs. Third-Party</h3>
+
+<ul>
+<li><strong>Choose AWS Native</strong> when you want tight IAM integration, no infrastructure to manage, native EventBridge triggers, and predictable per-pipeline pricing.</li>
+<li><strong>Choose Third-Party</strong> when you need multi-cloud portability, your team already has expertise in a tool, or you require advanced features like matrix builds or complex DAG pipelines.</li>
+<li><strong>Hybrid approach</strong> is common: use GitHub Actions for CI (build/test) and CodeDeploy or CDK Pipelines for CD (deployment to AWS).</li>
+</ul>
+
+<h2>Well-Architected Best Practices for CI/CD</h2>
+
+<p>The AWS Well-Architected Framework defines six pillars. Here's how each applies to CI/CD pipeline design:</p>
+
+<div class="pillar-card">
+<h4>🏗️ Operational Excellence</h4>
+<p><em>"Make frequent, small, reversible changes."</em></p>
+<ul>
+<li>Automate everything — no manual steps between commit and production</li>
+<li>Use infrastructure as code (CloudFormation, CDK, Terraform) for pipeline definitions</li>
+<li>Implement observability: pipeline metrics, build dashboards, failure alerting</li>
+<li>Practice runbook automation for rollback procedures</li>
+<li>Version control your <code>buildspec.yml</code>, pipeline definitions, and deployment configs</li>
+<li>Run pipelines in response to events (push, PR, tag) not on schedules</li>
+</ul>
+</div>
+
+<div class="pillar-card">
+<h4>🔒 Security</h4>
+<p><em>"Apply security at all layers."</em></p>
+<ul>
+<li>Use IAM roles (not access keys) for pipeline service accounts with least-privilege</li>
+<li>Store secrets in AWS Secrets Manager or SSM Parameter Store — never in code or env vars</li>
+<li>Enable pipeline encryption: S3 artifact buckets with KMS, encrypted build environments</li>
+<li>Integrate SAST/DAST scanning in build stage (CodeGuru, Snyk, Trivy, Checkov)</li>
+<li>Sign container images and validate signatures before deployment</li>
+<li>Use VPC endpoints for CodeBuild to prevent internet egress</li>
+<li>Enable CloudTrail logging on all CI/CD API actions</li>
+<li>Implement cross-account deployment with assume-role patterns (dev → staging → prod)</li>
+</ul>
+</div>
+
+<div class="pillar-card">
+<h4>⚡ Reliability</h4>
+<p><em>"Automatically recover from failure."</em></p>
+<ul>
+<li>Configure automatic rollback on deployment failure (CloudWatch alarms + CodeDeploy)</li>
+<li>Use blue/green or canary deployments to limit blast radius</li>
+<li>Run integration tests and smoke tests as post-deployment validation</li>
+<li>Design pipelines to be idempotent — re-running should be safe</li>
+<li>Implement circuit breakers: halt pipeline if error rate exceeds threshold</li>
+<li>Use multi-AZ / multi-region artifact storage for DR</li>
+<li>Set timeouts on all build and deploy stages to prevent hung pipelines</li>
+</ul>
+</div>
+
+<div class="pillar-card">
+<h4>🚀 Performance Efficiency</h4>
+<p><em>"Use computing resources efficiently."</em></p>
+<ul>
+<li>Cache dependencies (npm, pip, Maven) in CodeBuild to reduce build times</li>
+<li>Use CodeBuild batch builds for parallel test execution</li>
+<li>Right-size build compute: use <code>BUILD_GENERAL1_SMALL</code> for simple builds, scale up for Docker builds</li>
+<li>Use Lambda compute type in CodeBuild for sub-second startup on lightweight builds</li>
+<li>Implement incremental builds — only build what changed (monorepo path filters)</li>
+<li>Store build artifacts in S3 with lifecycle policies to expire old versions</li>
+</ul>
+</div>
+
+<div class="pillar-card">
+<h4>💰 Cost Optimization</h4>
+<p><em>"Avoid unnecessary costs."</em></p>
+<ul>
+<li>CodeBuild: pay only for build minutes consumed — no idle costs</li>
+<li>Avoid over-provisioned self-hosted runners; use spot instances for Jenkins agents</li>
+<li>Use CodePipeline V2 (per-action pricing) for infrequently-triggered pipelines vs. V1 (per-pipeline/month)</li>
+<li>Set S3 lifecycle rules on artifact buckets (delete after 30 days)</li>
+<li>Consolidate builds: use CodeBuild batch mode instead of separate projects</li>
+<li>Tag all CI/CD resources for cost allocation and visibility</li>
+<li>Review and delete orphaned pipelines and build projects monthly</li>
+</ul>
+</div>
+
+<div class="pillar-card">
+<h4>🌱 Sustainability</h4>
+<p><em>"Minimize environmental impact."</em></p>
+<ul>
+<li>Use managed services (serverless builds) instead of always-on EC2 instances</li>
+<li>Cache aggressively to reduce redundant compute work</li>
+<li>Use ARM-based build instances (<code>BUILD_GENERAL1_SMALL</code> with ARM image) for lower energy consumption</li>
+<li>Minimize artifact sizes — use multi-stage Docker builds, strip debug symbols</li>
+<li>Run pipelines only when needed — avoid unnecessary scheduled builds</li>
+</ul>
+</div>
+
+<h2>Pipeline Architecture Patterns</h2>
+
+<h3>Pattern 1: Single Account (Simple)</h3>
+
+<p>For small teams or non-production workloads:</p>
+
+<pre><code>Developer → GitHub → CodePipeline → CodeBuild → CodeDeploy → EC2/ECS
+                                         ↓
+                                    S3 Artifacts</code></pre>
+
+<h3>Pattern 2: Cross-Account (Enterprise)</h3>
+
+<p>Recommended for production workloads with proper environment isolation:</p>
+
+<pre><code>┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│  Dev Account │    │ Staging Acct │    │  Prod Account│
+│             │    │              │    │              │
+│  CodeBuild  │───▶│  CodeDeploy  │───▶│  CodeDeploy  │
+│  Unit Tests │    │  Int. Tests  │    │  Blue/Green  │
+└─────────────┘    └─────────────┘    └─────────────┘
+       ▲                                      │
+       │           ┌─────────────┐            │
+       └───────────│ Tools Account│────────────┘
+                   │ CodePipeline │
+                   │ Artifact S3  │
+                   │ KMS Key      │
+                   └─────────────┘</code></pre>
+
+<p>Key elements of cross-account deployment:</p>
+<ul>
+<li>Central tools account owns the pipeline and artifact bucket</li>
+<li>Cross-account IAM roles with least-privilege for each target account</li>
+<li>KMS CMK shared via key policy to encrypt/decrypt artifacts across accounts</li>
+<li>Manual approval gate before production deployment</li>
+</ul>
+
+<h3>Pattern 3: GitOps with EKS</h3>
+
+<pre><code>Developer → GitHub PR → GitHub Actions (CI)
+                              ↓
+                     Build & push to ECR
+                              ↓
+                     Update manifest repo
+                              ↓
+              Argo CD (in EKS) syncs desired state
+                              ↓
+                     Kubernetes applies changes</code></pre>
+
+<h3>Pattern 4: CDK Pipelines (Self-Mutating)</h3>
+
+<p>AWS CDK Pipelines is a high-level construct that creates a self-mutating pipeline — the pipeline updates itself when you change its definition:</p>
+
+<pre><code>import { CodePipeline, ShellStep, CodePipelineSource } from 'aws-cdk-lib/pipelines';
+
+const pipeline = new CodePipeline(this, 'Pipeline', {
+  synth: new ShellStep('Synth', {
+    input: CodePipelineSource.gitHub('org/repo', 'main'),
+    commands: ['npm ci', 'npx cdk synth'],
+  }),
+});
+
+pipeline.addStage(new StagingStage(this, 'Staging'));
+pipeline.addStage(new ProductionStage(this, 'Prod'), {
+  pre: [new ManualApprovalStep('PromoteToProd')],
+});</code></pre>
+
+<h2>Security Hardening Checklist</h2>
+
+<ol>
+<li><strong>Pipeline permissions</strong> — Each stage should have its own IAM role scoped to only the actions it performs</li>
+<li><strong>Artifact encryption</strong> — Use a customer-managed KMS key for the S3 artifact bucket</li>
+<li><strong>Network isolation</strong> — Run CodeBuild in a VPC with no internet gateway; use VPC endpoints for AWS services</li>
+<li><strong>Dependency scanning</strong> — Scan third-party libraries for vulnerabilities during the build phase</li>
+<li><strong>Container scanning</strong> — Use ECR image scanning or Trivy before promoting images</li>
+<li><strong>Branch protection</strong> — Require PR reviews and passing CI before merge to main</li>
+<li><strong>Audit trail</strong> — Enable CloudTrail for pipeline API calls and S3 data events on artifact buckets</li>
+<li><strong>Secrets rotation</strong> — Rotate service credentials automatically via Secrets Manager</li>
+</ol>
+
+<h2>Choosing the Right Approach: Decision Matrix</h2>
+
+<table class="comparison-table">
+<thead>
+<tr><th>Scenario</th><th>Recommended Approach</th></tr>
+</thead>
+<tbody>
+<tr><td>Small team, all-in on AWS, simple app</td><td>CodePipeline + CodeBuild + CodeDeploy</td></tr>
+<tr><td>Team uses GitHub heavily</td><td>GitHub Actions for CI → CodeDeploy or CDK Pipelines for CD</td></tr>
+<tr><td>Kubernetes-native workloads on EKS</td><td>Argo CD or Flux CD (GitOps)</td></tr>
+<tr><td>Multi-cloud or vendor-neutral requirement</td><td>GitLab CI/CD or GitHub Actions</td></tr>
+<tr><td>Enterprise with strict compliance</td><td>Cross-account CodePipeline + manual approvals + audit logging</td></tr>
+<tr><td>Infrastructure-only changes (IaC)</td><td>CDK Pipelines or Terraform Cloud</td></tr>
+<tr><td>Serverless (Lambda) deployments</td><td>SAM Pipelines or CDK Pipelines</td></tr>
+<tr><td>Legacy app migration to CI/CD</td><td>Jenkins on EC2 (short-term) → CodePipeline (long-term)</td></tr>
+</tbody>
+</table>
+
+<h2>Key Takeaways</h2>
+
+<ul>
+<li><strong>Start with managed services</strong> — CodePipeline + CodeBuild eliminates infrastructure overhead and integrates natively with IAM, CloudWatch, and EventBridge.</li>
+<li><strong>Adopt cross-account deployment</strong> — Separate dev, staging, and production accounts for blast radius reduction and least-privilege enforcement.</li>
+<li><strong>Automate security</strong> — Embed SAST, container scanning, and dependency checks directly in the pipeline. Don't bolt security on after the fact.</li>
+<li><strong>Use progressive deployments</strong> — Canary and blue/green strategies give you confidence and automatic rollback capability.</li>
+<li><strong>Align with Well-Architected</strong> — Every pipeline decision maps to at least one pillar. Revisit your pipeline design as part of regular Well-Architected Reviews.</li>
+<li><strong>Measure pipeline health</strong> — Track deployment frequency, lead time, change failure rate, and mean time to recovery (the DORA metrics).</li>
+</ul>
+
+<p>A well-designed CI/CD pipeline on AWS isn't just about shipping code faster — it's about shipping <strong>safely, securely, and sustainably</strong> while maintaining the agility your business demands.</p>
+
+<p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted);">
+<strong>References:</strong><br>
+<a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html">AWS Well-Architected Framework</a> · 
+<a href="https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/welcome.html">Operational Excellence Pillar</a> · 
+<a href="https://aws.amazon.com/blogs/devops/choosing-well-architected-ci-cd-open-source-software-aws-services/">Choosing a Well-Architected CI/CD Approach (AWS Blog)</a>
+</p>
+
+</div></article>
+<footer><div class="container">© 2026 Mohammed Toraif. Cloud Architect & DevOps Engineer.</div></footer>
+</body>
+</html>
