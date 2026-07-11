@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CI/CD on AWS — Options & Well-Architected Best Practices
+title: CI/CD on AWS: Options & Well-Architected Best Practices
 subtitle: A comprehensive guide to building secure, reliable, and cost-efficient pipelines on AWS
 tags: [AWS, CI/CD, DevOps, Well-Architected, CodePipeline, CodeBuild, CodeDeploy, Security]
 comments: false
@@ -19,11 +19,11 @@ AWS offers a fully managed CI/CD suite that integrates natively with the broader
 | **CodePipeline** | Orchestration | Visual workflow, stage/action model, parallel actions, cross-account/cross-region |
 | **CodeBuild** | Build & Test | Fully managed, pay-per-minute, custom Docker environments, caching, batch builds |
 | **CodeDeploy** | Deployment | EC2, ECS, Lambda targets; blue/green, rolling, canary strategies; auto rollback |
-| **CodeCommit** | Source (deprecated) | Git hosting (no new customers as of 2024 — migrate to GitHub/GitLab/Bitbucket) |
+| **CodeCommit** | Source (deprecated) | Git hosting (no new customers as of 2024, migrate to GitHub/GitLab/Bitbucket) |
 | **CodeArtifact** | Artifact Management | Package repos for npm, PyPI, Maven, NuGet; upstream proxying |
 | **CodeCatalyst** | Unified DevOps | Integrated IDE, CI/CD workflows, issue tracking, dev environments |
 
-### CodePipeline — The Orchestrator
+### CodePipeline: The Orchestrator
 
 CodePipeline defines the stages of your delivery workflow: Source → Build → Test → Deploy. It connects to source providers (GitHub, Bitbucket, S3, ECR), triggers builds, runs tests, requires manual approvals, and deploys to targets.
 
@@ -61,7 +61,7 @@ Pipeline:
               ServiceName: !Ref Service
 ```
 
-### CodeBuild — Build & Test
+### CodeBuild: Build & Test
 
 CodeBuild compiles code, runs tests, and produces artifacts. It scales automatically with no servers to manage. Define build steps in `buildspec.yml`:
 
@@ -92,7 +92,7 @@ cache:
     - node_modules/**/*
 ```
 
-### CodeDeploy — Deployment Strategies
+### CodeDeploy: Deployment Strategies
 
 | Strategy | Platform | Description |
 |----------|----------|-------------|
@@ -102,7 +102,7 @@ cache:
 | **Linear** | Lambda, ECS | Gradually shifts traffic in equal increments |
 | **All-at-Once** | Lambda | Immediate full traffic shift |
 
-### CodeCatalyst — The Unified Experience
+### CodeCatalyst: The Unified Experience
 
 Amazon CodeCatalyst is a unified DevOps service combining project management, CI/CD workflows, cloud development environments, and team collaboration. Ideal for teams wanting a GitHub-like experience fully integrated with AWS.
 
@@ -129,7 +129,7 @@ Amazon CodeCatalyst is a unified DevOps service combining project management, CI
 
 *"Make frequent, small, reversible changes."*
 
-- Automate everything — no manual steps between commit and production
+- Automate everything: no manual steps between commit and production
 - Use infrastructure as code for pipeline definitions
 - Implement observability: pipeline metrics, build dashboards, failure alerting
 - Version control buildspec, pipeline definitions, and deployment configs
@@ -171,7 +171,7 @@ Amazon CodeCatalyst is a unified DevOps service combining project management, CI
 
 *"Avoid unnecessary costs."*
 
-- CodeBuild: pay only for build minutes — no idle costs
+- CodeBuild: pay only for build minutes, no idle costs
 - Use spot instances for self-hosted runners
 - Use CodePipeline V2 (per-action pricing) for infrequent pipelines
 - Set S3 lifecycle rules on artifact buckets
@@ -237,11 +237,11 @@ pipeline.addStage(new ProductionStage(this, 'Prod'), {
 
 ## Key Takeaways
 
-- **Start with managed services** — eliminates infrastructure overhead
-- **Adopt cross-account deployment** — proper blast radius reduction
-- **Automate security** — embed scanning directly in the pipeline
-- **Use progressive deployments** — canary and blue/green for confidence
-- **Align with Well-Architected** — revisit pipeline design in regular WA Reviews
-- **Measure pipeline health** — track the DORA metrics (deployment frequency, lead time, change failure rate, MTTR)
+- **Start with managed services**: eliminates infrastructure overhead
+- **Adopt cross-account deployment**: proper blast radius reduction
+- **Automate security**: embed scanning directly in the pipeline
+- **Use progressive deployments**: canary and blue/green for confidence
+- **Align with Well-Architected**: revisit pipeline design in regular WA Reviews
+- **Measure pipeline health**: track the DORA metrics (deployment frequency, lead time, change failure rate, MTTR)
 
-A well-designed CI/CD pipeline on AWS isn't just about shipping code faster — it's about shipping **safely, securely, and sustainably**.
+A well-designed CI/CD pipeline on AWS isn't just about shipping code faster. It's about shipping **safely, securely, and sustainably**.

@@ -59,7 +59,7 @@
 <body>
 <nav><div class="container"><a href="/" class="logo">Mohammed Toraif</a><a href="/#writing">← Back to Writing</a></div></nav>
 <article><div class="container">
-<h1>CI/CD on AWS — Options & Well-Architected Best Practices</h1>
+<h1>CI/CD on AWS: Options & Well-Architected Best Practices</h1>
 <div class="meta">2026-07-11 · 10 min read</div>
 
 <p>Continuous Integration and Continuous Delivery (CI/CD) is the backbone of modern software delivery. AWS provides a rich ecosystem of native and third-party CI/CD tools, and the <strong>AWS Well-Architected Framework</strong> offers guiding principles to ensure your pipelines are secure, reliable, cost-efficient, and operationally excellent.</p>
@@ -78,13 +78,13 @@
 <tr><td><strong>CodePipeline</strong></td><td>Orchestration</td><td>Visual workflow, stage/action model, parallel actions, cross-account/cross-region deployments</td></tr>
 <tr><td><strong>CodeBuild</strong></td><td>Build & Test</td><td>Fully managed, pay-per-minute, custom Docker environments, caching, batch builds</td></tr>
 <tr><td><strong>CodeDeploy</strong></td><td>Deployment</td><td>EC2, ECS, Lambda targets; blue/green, rolling, canary strategies; automatic rollback</td></tr>
-<tr><td><strong>CodeCommit</strong></td><td>Source (deprecated)</td><td>Git hosting (no new customers as of 2024 — migrate to GitHub, GitLab, or Bitbucket)</td></tr>
+<tr><td><strong>CodeCommit</strong></td><td>Source (deprecated)</td><td>Git hosting (no new customers as of 2024, migrate to GitHub, GitLab, or Bitbucket)</td></tr>
 <tr><td><strong>CodeArtifact</strong></td><td>Artifact Management</td><td>Package repositories for npm, PyPI, Maven, NuGet; upstream proxying</td></tr>
 <tr><td><strong>CodeCatalyst</strong></td><td>Unified DevOps</td><td>Integrated IDE, CI/CD workflows, issue tracking, dev environments</td></tr>
 </tbody>
 </table>
 
-<h3>CodePipeline — The Orchestrator</h3>
+<h3>CodePipeline: The Orchestrator</h3>
 
 <p>CodePipeline defines the stages of your delivery workflow: Source → Build → Test → Deploy. It connects to source providers (GitHub, Bitbucket, S3, ECR), triggers builds, runs tests, requires manual approvals, and deploys to targets.</p>
 
@@ -121,7 +121,7 @@ Pipeline:
               ClusterName: !Ref Cluster
               ServiceName: !Ref Service</code></pre>
 
-<h3>CodeBuild — Build & Test</h3>
+<h3>CodeBuild: Build & Test</h3>
 
 <p>CodeBuild compiles code, runs tests, and produces artifacts. It scales automatically with no servers to manage. You define build steps in a <code>buildspec.yml</code> file:</p>
 
@@ -151,7 +151,7 @@ cache:
   paths:
     - node_modules/**/*</code></pre>
 
-<h3>CodeDeploy — Deployment Strategies</h3>
+<h3>CodeDeploy: Deployment Strategies</h3>
 
 <p>CodeDeploy supports multiple deployment strategies depending on your compute platform:</p>
 
@@ -164,11 +164,11 @@ cache:
 <tr><td><strong>Blue/Green</strong></td><td>EC2, ECS</td><td>Provisions new environment, shifts traffic, keeps old as rollback</td></tr>
 <tr><td><strong>Canary</strong></td><td>Lambda, ECS</td><td>Routes small % of traffic to new version first (e.g., 10% for 5 min)</td></tr>
 <tr><td><strong>Linear</strong></td><td>Lambda, ECS</td><td>Gradually shifts traffic in equal increments over time</td></tr>
-<tr><td><strong>All-at-Once</strong></td><td>Lambda</td><td>Immediate full traffic shift — fast but no gradual rollback</td></tr>
+<tr><td><strong>All-at-Once</strong></td><td>Lambda</td><td>Immediate full traffic shift, fast but no gradual rollback</td></tr>
 </tbody>
 </table>
 
-<h3>CodeCatalyst — The Unified Experience</h3>
+<h3>CodeCatalyst: The Unified Experience</h3>
 
 <p>Amazon CodeCatalyst is a newer unified DevOps service that combines project management, CI/CD workflows, cloud development environments, and team collaboration in a single tool. It's ideal for teams wanting a GitHub-like experience fully integrated with AWS.</p>
 
@@ -207,7 +207,7 @@ cache:
 <h4>🏗️ Operational Excellence</h4>
 <p><em>"Make frequent, small, reversible changes."</em></p>
 <ul>
-<li>Automate everything — no manual steps between commit and production</li>
+<li>Automate everything: no manual steps between commit and production</li>
 <li>Use infrastructure as code (CloudFormation, CDK, Terraform) for pipeline definitions</li>
 <li>Implement observability: pipeline metrics, build dashboards, failure alerting</li>
 <li>Practice runbook automation for rollback procedures</li>
@@ -221,7 +221,7 @@ cache:
 <p><em>"Apply security at all layers."</em></p>
 <ul>
 <li>Use IAM roles (not access keys) for pipeline service accounts with least-privilege</li>
-<li>Store secrets in AWS Secrets Manager or SSM Parameter Store — never in code or env vars</li>
+<li>Store secrets in AWS Secrets Manager or SSM Parameter Store, never in code or env vars</li>
 <li>Enable pipeline encryption: S3 artifact buckets with KMS, encrypted build environments</li>
 <li>Integrate SAST/DAST scanning in build stage (CodeGuru, Snyk, Trivy, Checkov)</li>
 <li>Sign container images and validate signatures before deployment</li>
@@ -238,7 +238,7 @@ cache:
 <li>Configure automatic rollback on deployment failure (CloudWatch alarms + CodeDeploy)</li>
 <li>Use blue/green or canary deployments to limit blast radius</li>
 <li>Run integration tests and smoke tests as post-deployment validation</li>
-<li>Design pipelines to be idempotent — re-running should be safe</li>
+<li>Design pipelines to be idempotent: re-running should be safe</li>
 <li>Implement circuit breakers: halt pipeline if error rate exceeds threshold</li>
 <li>Use multi-AZ / multi-region artifact storage for DR</li>
 <li>Set timeouts on all build and deploy stages to prevent hung pipelines</li>
@@ -253,7 +253,7 @@ cache:
 <li>Use CodeBuild batch builds for parallel test execution</li>
 <li>Right-size build compute: use <code>BUILD_GENERAL1_SMALL</code> for simple builds, scale up for Docker builds</li>
 <li>Use Lambda compute type in CodeBuild for sub-second startup on lightweight builds</li>
-<li>Implement incremental builds — only build what changed (monorepo path filters)</li>
+<li>Implement incremental builds: only build what changed (monorepo path filters)</li>
 <li>Store build artifacts in S3 with lifecycle policies to expire old versions</li>
 </ul>
 </div>
@@ -262,7 +262,7 @@ cache:
 <h4>💰 Cost Optimization</h4>
 <p><em>"Avoid unnecessary costs."</em></p>
 <ul>
-<li>CodeBuild: pay only for build minutes consumed — no idle costs</li>
+<li>CodeBuild: pay only for build minutes consumed, no idle costs</li>
 <li>Avoid over-provisioned self-hosted runners; use spot instances for Jenkins agents</li>
 <li>Use CodePipeline V2 (per-action pricing) for infrequently-triggered pipelines vs. V1 (per-pipeline/month)</li>
 <li>Set S3 lifecycle rules on artifact buckets (delete after 30 days)</li>
@@ -279,8 +279,8 @@ cache:
 <li>Use managed services (serverless builds) instead of always-on EC2 instances</li>
 <li>Cache aggressively to reduce redundant compute work</li>
 <li>Use ARM-based build instances (<code>BUILD_GENERAL1_SMALL</code> with ARM image) for lower energy consumption</li>
-<li>Minimize artifact sizes — use multi-stage Docker builds, strip debug symbols</li>
-<li>Run pipelines only when needed — avoid unnecessary scheduled builds</li>
+<li>Minimize artifact sizes: use multi-stage Docker builds, strip debug symbols</li>
+<li>Run pipelines only when needed: avoid unnecessary scheduled builds</li>
 </ul>
 </div>
 
@@ -334,7 +334,7 @@ cache:
 
 <h3>Pattern 4: CDK Pipelines (Self-Mutating)</h3>
 
-<p>AWS CDK Pipelines is a high-level construct that creates a self-mutating pipeline — the pipeline updates itself when you change its definition:</p>
+<p>AWS CDK Pipelines is a high-level construct that creates a self-mutating pipeline: the pipeline updates itself when you change its definition:</p>
 
 <pre><code>import { CodePipeline, ShellStep, CodePipelineSource } from 'aws-cdk-lib/pipelines';
 
@@ -353,14 +353,14 @@ pipeline.addStage(new ProductionStage(this, 'Prod'), {
 <h2>Security Hardening Checklist</h2>
 
 <ol>
-<li><strong>Pipeline permissions</strong> — Each stage should have its own IAM role scoped to only the actions it performs</li>
-<li><strong>Artifact encryption</strong> — Use a customer-managed KMS key for the S3 artifact bucket</li>
-<li><strong>Network isolation</strong> — Run CodeBuild in a VPC with no internet gateway; use VPC endpoints for AWS services</li>
-<li><strong>Dependency scanning</strong> — Scan third-party libraries for vulnerabilities during the build phase</li>
-<li><strong>Container scanning</strong> — Use ECR image scanning or Trivy before promoting images</li>
-<li><strong>Branch protection</strong> — Require PR reviews and passing CI before merge to main</li>
-<li><strong>Audit trail</strong> — Enable CloudTrail for pipeline API calls and S3 data events on artifact buckets</li>
-<li><strong>Secrets rotation</strong> — Rotate service credentials automatically via Secrets Manager</li>
+<li><strong>Pipeline permissions</strong>: Each stage should have its own IAM role scoped to only the actions it performs</li>
+<li><strong>Artifact encryption</strong>: Use a customer-managed KMS key for the S3 artifact bucket</li>
+<li><strong>Network isolation</strong>: Run CodeBuild in a VPC with no internet gateway; use VPC endpoints for AWS services</li>
+<li><strong>Dependency scanning</strong>: Scan third-party libraries for vulnerabilities during the build phase</li>
+<li><strong>Container scanning</strong>: Use ECR image scanning or Trivy before promoting images</li>
+<li><strong>Branch protection</strong>: Require PR reviews and passing CI before merge to main</li>
+<li><strong>Audit trail</strong>: Enable CloudTrail for pipeline API calls and S3 data events on artifact buckets</li>
+<li><strong>Secrets rotation</strong>: Rotate service credentials automatically via Secrets Manager</li>
 </ol>
 
 <h2>Choosing the Right Approach: Decision Matrix</h2>
@@ -384,15 +384,15 @@ pipeline.addStage(new ProductionStage(this, 'Prod'), {
 <h2>Key Takeaways</h2>
 
 <ul>
-<li><strong>Start with managed services</strong> — CodePipeline + CodeBuild eliminates infrastructure overhead and integrates natively with IAM, CloudWatch, and EventBridge.</li>
-<li><strong>Adopt cross-account deployment</strong> — Separate dev, staging, and production accounts for blast radius reduction and least-privilege enforcement.</li>
-<li><strong>Automate security</strong> — Embed SAST, container scanning, and dependency checks directly in the pipeline. Don't bolt security on after the fact.</li>
-<li><strong>Use progressive deployments</strong> — Canary and blue/green strategies give you confidence and automatic rollback capability.</li>
-<li><strong>Align with Well-Architected</strong> — Every pipeline decision maps to at least one pillar. Revisit your pipeline design as part of regular Well-Architected Reviews.</li>
-<li><strong>Measure pipeline health</strong> — Track deployment frequency, lead time, change failure rate, and mean time to recovery (the DORA metrics).</li>
+<li><strong>Start with managed services</strong>: CodePipeline + CodeBuild eliminates infrastructure overhead and integrates natively with IAM, CloudWatch, and EventBridge.</li>
+<li><strong>Adopt cross-account deployment</strong>: Separate dev, staging, and production accounts for blast radius reduction and least-privilege enforcement.</li>
+<li><strong>Automate security</strong>: Embed SAST, container scanning, and dependency checks directly in the pipeline. Don't bolt security on after the fact.</li>
+<li><strong>Use progressive deployments</strong>: Canary and blue/green strategies give you confidence and automatic rollback capability.</li>
+<li><strong>Align with Well-Architected</strong>: Every pipeline decision maps to at least one pillar. Revisit your pipeline design as part of regular Well-Architected Reviews.</li>
+<li><strong>Measure pipeline health</strong>: Track deployment frequency, lead time, change failure rate, and mean time to recovery (the DORA metrics).</li>
 </ul>
 
-<p>A well-designed CI/CD pipeline on AWS isn't just about shipping code faster — it's about shipping <strong>safely, securely, and sustainably</strong> while maintaining the agility your business demands.</p>
+<p>A well-designed CI/CD pipeline on AWS isn't just about shipping code faster. It's about shipping <strong>safely, securely, and sustainably</strong> while maintaining the agility your business demands.</p>
 
 <p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted);">
 <strong>References:</strong><br>
