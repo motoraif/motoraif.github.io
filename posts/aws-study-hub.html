@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building AWS Study Hub - Why and How I Built a Free AWS Certification Platform - Mohammed Toraif</title>
+    <meta name="description" content="How and why I built AWS Study Hub - a free, open-source study platform for every AWS certification. The tech stack, architecture, automation, and the motivation behind it.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117; --bg-secondary: #1a1d27; --text: #e4e4e7;
+            --text-muted: #a1a1aa; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --border: #27272a; --card-bg: #18181b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(15, 17, 23, 0.85); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border); z-index: 1000; padding: 1rem 0;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+        nav a:hover { color: var(--text); }
+        nav .logo { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+        article { padding: 8rem 0 4rem; }
+        article h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        article .meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        article h2 { font-size: 1.3rem; font-weight: 600; margin: 2.5rem 0 1rem; }
+        article h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+        article p { margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95rem; }
+        article ul, article ol { margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+        article li { margin-bottom: 0.5rem; }
+        article code { background: var(--bg-secondary); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.85rem; }
+        article pre { background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--border); }
+        article pre code { background: none; padding: 0; }
+        article strong { color: var(--text); }
+        article a { color: var(--accent); text-decoration: none; }
+        article a:hover { color: var(--accent-hover); }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
+        .comparison-table th, .comparison-table td { padding: 0.75rem; border: 1px solid var(--border); text-align: left; color: var(--text-muted); }
+        .comparison-table th { background: var(--bg-secondary); color: var(--text); font-weight: 600; }
+        .comparison-table tr:hover { background: var(--bg-secondary); }
+        .pillar-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; }
+        .pillar-card h4 { color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .pillar-card p { margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .cta { display: inline-block; background: var(--accent); color: #fff !important; padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 0.9rem; font-weight: 500; margin: 1rem 0; }
+        .cta:hover { background: var(--accent-hover); }
+        .tag { display: inline-block; background: var(--bg-secondary); border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; color: var(--accent); margin-right: 0.5rem; margin-bottom: 0.3rem; }
+        footer { padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+<nav><div class="container"><a href="/" class="logo">Mohammed Toraif</a><a href="/#writing">← Back to Writing</a></div></nav>
+<article><div class="container">
+<h1>Building AWS Study Hub: Why and How I Built a Free AWS Certification Platform</h1>
+<div class="meta">2026-09-13 · 8 min read</div>
+
+<p>I recently built and launched <strong><a href="https://toraif.com/aws-study-hub/" target="_blank">AWS Study Hub</a></strong> - a free, open-source study platform that pulls together everything you need to prepare for every AWS certification, all in one place. This post covers why I built it, the technology behind it, and how it works under the hood.</p>
+
+<p>
+<span class="tag">Static Site</span>
+<span class="tag">HTML/CSS/JS</span>
+<span class="tag">Python</span>
+<span class="tag">GitHub Actions</span>
+<span class="tag">GitHub Pages</span>
+<span class="tag">Open Source</span>
+</p>
+
+<h2>Why I Built It</h2>
+
+<p>If you have ever prepared for an AWS certification, you know the study resources are scattered everywhere. Official Skill Builder courses in one place, exam guides as PDFs somewhere else, the best Udemy instructors on another site, practice exams behind yet another login, and community cheat sheets buried in forum threads. Every time I mentored someone starting their AWS journey, I found myself sending the same list of links over and over.</p>
+
+<p>On top of that, the AWS certification landscape keeps changing. Certifications get retired, new ones launch, and exam versions get refreshed. In 2024 the Data Analytics Specialty was retired in favour of Data Engineer Associate. In 2026 the Machine Learning Specialty gave way to the ML Engineer Associate, and a brand-new Generative AI Developer Professional appeared. Most study sites simply don't keep up.</p>
+
+<p>So I set out to build something with three goals:</p>
+
+<ul>
+<li><strong>One curated home</strong> for every AWS cert - official resources first, best community resources second.</li>
+<li><strong>Always current</strong> - reflecting retirements, new certifications, and exam updates as they happen.</li>
+<li><strong>Free and open</strong> - no paywalls, no accounts, and open source so anyone can contribute or fork it.</li>
+</ul>
+
+<h2>The Technology Stack</h2>
+
+<p>I deliberately kept the stack simple. A study reference site does not need a heavy framework, a database, or a build pipeline that takes minutes to run. It needs to be fast, cheap (ideally free) to host, and effortless to maintain.</p>
+
+<table class="comparison-table">
+<thead>
+<tr><th>Layer</th><th>Choice</th><th>Why</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Frontend</strong></td><td>Plain HTML, CSS, and vanilla JavaScript</td><td>Zero dependencies, instant load, no framework overhead or build step for content</td></tr>
+<tr><td><strong>Page generation</strong></td><td>Python (build script)</td><td>Generates consistent cert pages from a single source of truth</td></tr>
+<tr><td><strong>Shared UI</strong></td><td>JS-injected navbar and footer</td><td>One place to update navigation across every page</td></tr>
+<tr><td><strong>Hosting</strong></td><td>GitHub Pages</td><td>Free, fast, backed by a CDN, custom domain support</td></tr>
+<tr><td><strong>Automation</strong></td><td>GitHub Actions</td><td>Weekly content refresh and automated deployments</td></tr>
+<tr><td><strong>Data</strong></td><td>A small JSON file</td><td>Holds the auto-updated AWS news archive - no database needed</td></tr>
+</tbody>
+</table>
+
+<p>The whole thing is a static site. That means it is essentially free to run, loads almost instantly, and has a tiny attack surface. There is no server to patch and no database to secure.</p>
+
+<h2>How It's Built</h2>
+
+<h3>Content and structure</h3>
+
+<p>Each certification has its own page with a consistent layout: an exam overview (duration, question count, passing score, cost), the exam domains and their weightings, key topics, the AWS services you need to know, official resource links, and an interactive study checklist. The checklist state is saved in the browser using <code>localStorage</code>, so learners can track progress without needing an account.</p>
+
+<p>Foundational pages on Linux and networking sit before the AWS content, because those fundamentals make every cert exam significantly easier. The recommended path runs Linux → Networking → Cloud Practitioner → Associate → Professional/Specialty.</p>
+
+<h3>Shared components without a framework</h3>
+
+<p>Rather than reach for React or a static-site generator, the navbar and footer are injected by a small JavaScript file on every page. This keeps navigation consistent everywhere while avoiding a build step for the UI. It also automatically resolves relative paths so pages work correctly whether they sit at the root or inside the <code>docs/</code> folder.</p>
+
+<h3>The auto-updated AWS news feed</h3>
+
+<p>One feature I really wanted was for the platform to stay fresh on its own. A GitHub Actions workflow runs every week, fetches the official <strong>AWS What's New</strong> RSS feed, and appends any new announcements to a cumulative JSON archive (de-duplicated and sorted newest-first). A News page then reads that JSON in the browser and renders a searchable feed, with each item linking straight to the official AWS source.</p>
+
+<pre><code># Simplified: the weekly workflow trigger
+on:
+  schedule:
+    - cron: '0 8 * * 0'   # every Sunday at 08:00 UTC
+  workflow_dispatch:
+
+# The job fetches the AWS What's New feed, merges new items
+# into data/aws-news.json, opens a PR, and auto-merges it.
+# A push to main then triggers the deploy workflow.</code></pre>
+
+<p>The result is a self-maintaining news section - the content refreshes weekly with no manual effort.</p>
+
+<h3>Deployment</h3>
+
+<p>Deployment is handled by a second GitHub Actions workflow. On every push to <code>main</code>, it publishes the site to the <code>gh-pages</code> branch, which GitHub Pages serves over its CDN. Push code, and a minute later it is live. No manual steps, no hosting bills.</p>
+
+<h2>Keeping the Certifications Accurate</h2>
+
+<p>Because the AWS certification portfolio evolves, I built in a clear tagging system:</p>
+
+<div class="pillar-card">
+<h4>Retired certifications</h4>
+<p>Marked with a retirement badge, the expiry date, and a link to the replacement. For example, Data Analytics Specialty (retired 2024) points to Data Engineer Associate, and Machine Learning Specialty (retired 2026) points to ML Engineer Associate.</p>
+</div>
+
+<div class="pillar-card">
+<h4>Certifications being updated</h4>
+<p>Flagged with the last exam date for the current version and details of what the new version adds - so nobody books an outdated exam by accident.</p>
+</div>
+
+<div class="pillar-card">
+<h4>New certifications</h4>
+<p>Tagged as new, with full study guides. The latest additions include AI Practitioner, Data Engineer Associate, ML Engineer Associate, and the Generative AI Developer Professional.</p>
+</div>
+
+<h2>What I Learned</h2>
+
+<ul>
+<li><strong>Simple wins.</strong> A static site with plain HTML and a sprinkle of JavaScript delivers a fast, maintainable, and free platform. Not every project needs a framework.</li>
+<li><strong>Automate the boring parts.</strong> The weekly news workflow means the site stays current without me touching it. Setting that up once pays off every week.</li>
+<li><strong>Design for change.</strong> Because AWS certs come and go, building the tagging and content model up front made keeping the site accurate straightforward rather than painful.</li>
+<li><strong>Open source multiplies impact.</strong> Anyone can contribute a resource, fix a typo, or add an exam tip - and everyone benefits.</li>
+</ul>
+
+<h2>Try It and Contribute</h2>
+
+<p>AWS Study Hub is live, free, and open source. Whether you are studying for your first Cloud Practitioner exam or your next Professional certification, I hope it saves you the hours of link-hunting that inspired it in the first place.</p>
+
+<p><a href="https://toraif.com/aws-study-hub/" target="_blank" class="cta">Visit AWS Study Hub →</a></p>
+
+<p>Found something that could be better? Contributions are welcome - the project lives on <a href="https://github.com/motoraif/aws-study-hub" target="_blank">GitHub</a>.</p>
+
+<p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted);">
+<strong>Links:</strong><br>
+<a href="https://toraif.com/aws-study-hub/" target="_blank">AWS Study Hub</a> · 
+<a href="https://github.com/motoraif/aws-study-hub" target="_blank">GitHub Repository</a> · 
+<a href="https://aws.amazon.com/certification/" target="_blank">AWS Certification</a>
+</p>
+
+</div></article>
+<footer><div class="container">© 2026 Mohammed Toraif. Cloud Architect & DevOps Engineer.</div></footer>
+</body>
+</html>
